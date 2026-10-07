@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use '../tokens/map' as tokens;
+
+@function -check($group, $name) {
+  $values: map.get(tokens.$tokens, $group);
+  $key: '#{$name}';
+  @if not map.has-key($values, $key) {
+    @error 'Unknown #{$group} token "#{$name}". Available: #{map.keys($values)}';
+  }
+  @return $key;
+}
+
+@function color($name) {
+  @return var(--color-#{-check('color', $name)});
+}
+
+@function space($step) {
+  @return var(--space-#{-check('space', $step)});
+}
+
+@function radius($name) {
+  @return var(--radius-#{-check('radius', $name)});
+}
+
+@function shadow($name) {
+  @return var(--shadow-#{-check('shadow', $name)});
+}
+
+@function font-family($name: 'sans') {
+  @return var(--font-family-#{-check('font-family', $name)});
+}
+
+@function duration($name: 'base') {
+  @return var(--duration-#{-check('duration', $name)});
+}
+
+@function easing($name: 'standard') {
+  @return var(--easing-#{-check('easing', $name)});
+}
+
+@function z($name) {
+  @return map.get(tokens.$tokens, 'z-index', -check('z-index', $name));
+}

@@ -1,0 +1,39 @@
+@use '../index' as ds;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @include ds.text-style('body');
+  color: ds.color('text-default');
+  background-color: ds.color('background-page');
+}
+
+h1 {
+  @include ds.text-style('h1');
+}
+
+h2 {
+  @include ds.text-style('h2');
+}
+
+h3 {
+  @include ds.text-style('h3');
+}
+
+h4 {
+  @include ds.text-style('h4');
+}
+
+a {
+  color: ds.color('text-link');
+
+  &:hover {
+    color: ds.color('text-link-hover');
+  }
+}
+
+:focus-visible {
+  @include ds.focus-ring;
+}

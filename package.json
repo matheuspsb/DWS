@@ -8,6 +8,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "tokens": "style-dictionary build --config sd.config.mjs",
+    "prestart": "npm run tokens",
+    "predev": "npm run tokens",
+    "prebuild": "npm run tokens",
     "lint": "oxlint",
     "typecheck": "tsc",
     "test": "vitest run",
@@ -28,6 +32,7 @@
     "jsdom": "^28.1.0",
     "oxlint": "^1.81.0",
     "sass": "^1.105.1",
+    "style-dictionary": "^5.6.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
     "vitest": "^5.0.3"

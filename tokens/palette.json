@@ -1,0 +1,25 @@
+{
+  "palette": {
+    "white": { "$value": "#ffffff" },
+
+    "neutral-lightest": { "$value": "#f0f0f2" },
+    "neutral-extra-light": { "$value": "#e0e2e6" },
+    "neutral-light": { "$value": "#c0c2c8" },
+    "neutral-medium": { "$value": "#9ea0a5" },
+    "neutral-dark": { "$value": "#7f8185" },
+    "neutral-extra-dark": { "$value": "#5e5f63" },
+    "neutral-darkest": { "$value": "#202122" },
+
+    "primary-light": { "$value": "#0b0e3a" },
+    "primary-medium": { "$value": "#060725" },
+    "primary-dark": { "$value": "#020318" },
+
+    "secondary-light": { "$value": "#ef4c84" },
+    "secondary-medium": { "$value": "#d31450" },
+    "secondary-dark": { "$value": "#8c1038" },
+
+    "accent-light": { "$value": "#00bfc1" },
+    "accent-medium": { "$value": "#009598" },
+    "accent-dark": { "$value": "#006c6e" }
+  }
+}
