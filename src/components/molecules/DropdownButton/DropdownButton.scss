@@ -1,0 +1,52 @@
+@use 'styles' as ds;
+
+$border-width: 1px;
+
+.dropdown-button {
+  display: inline-flex;
+  align-items: center;
+  gap: ds.space(1);
+  max-width: 100%;
+  height: 2rem;
+  padding: 0 calc(#{ds.space(3)} - #{$border-width}) 0 calc(#{ds.space(4)} - #{$border-width});
+  border: $border-width solid ds.color('action-secondary');
+  border-radius: ds.radius('full');
+  background-color: ds.color('background-subtle');
+  color: ds.color('action-secondary');
+  transition: background-color ds.duration('fast') ds.easing('standard');
+
+  &:hover,
+  &--open,
+  &--selected {
+    background-color: ds.color-alpha('action-secondary', 5%);
+  }
+
+  &__toggle,
+  &__clear {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: ds.radius('full');
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &__toggle {
+    @include ds.text-style('caption-bold');
+    gap: ds.space(1);
+    min-width: 0;
+    height: 100%;
+  }
+
+  &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__clear {
+    height: 1.5rem;
+  }
+}

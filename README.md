@@ -44,10 +44,12 @@ sd.config.mjs   Style Dictionary configuration
 scripts/        setup.mjs: checks Node, installs dependencies when missing and generates tokens (run by the pre* npm hooks)
 src/
   api/          API client and endpoint functions
-  components/   Reusable components
+  components/   Atomic Design: atoms, molecules, organisms and templates
+  hooks/        Reusable hooks
   pages/        Route-level views (PostList, PostDetail)
   styles/       Design system (tokens, functions/mixins, base styles)
-  test/         Test setup
+  test/         Test setup and helpers
+  utils/        Pure helpers
 ```
 
 ## API

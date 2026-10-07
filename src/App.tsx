@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout/Layout.tsx'
+import Layout from './components/templates/Layout/Layout.tsx'
 import PostDetail from './pages/PostDetail/PostDetail.tsx'
 import PostList from './pages/PostList/PostList.tsx'
 

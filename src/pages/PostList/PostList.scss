@@ -1,0 +1,11 @@
+@use 'styles' as ds;
+
+.post-list {
+  &__filters {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: ds.space(2);
+    margin-top: ds.space(4);
+  }
+}

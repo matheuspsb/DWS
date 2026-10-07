@@ -1,0 +1,33 @@
+@use 'styles' as ds;
+
+.filter-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 1.75rem;
+  border-radius: ds.radius('sm');
+  color: ds.color('text-default');
+  cursor: pointer;
+
+  &__input {
+    @include ds.visually-hidden;
+  }
+
+  &__label {
+    @include ds.text-style('body-sm');
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__input:checked + &__label {
+    font-weight: 600;
+  }
+
+  &__input:focus-visible + &__label {
+    @include ds.focus-ring;
+  }
+}
