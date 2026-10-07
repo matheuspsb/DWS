@@ -13,7 +13,7 @@
 }
 
 @mixin -emit-text($props) {
-  @each $property, $css-property in ('size': font-size, 'line-height': line-height, 'weight': font-weight, 'tracking': letter-spacing) {
+  @each $property, $css-property in ('size': font-size, 'line-height': line-height, 'weight': font-weight) {
     @if map.has-key($props, $property) {
       #{$css-property}: map.get($props, $property);
     }

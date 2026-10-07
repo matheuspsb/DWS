@@ -1,85 +1,47 @@
 {
   "font-family": {
-    "sans": { "$value": "system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" },
+    "sans": { "$value": "'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" },
     "mono": { "$value": "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace" }
   },
   "font-weight": {
     "regular": { "$value": 400 },
-    "medium": { "$value": 500 },
     "semibold": { "$value": 600 },
     "bold": { "$value": 700 }
   },
   "text-style": {
-    "display": {
-      "mobile": {
-        "size": { "$value": "2.25rem" },
-        "line-height": { "$value": 1.15 },
-        "weight": { "$value": "{font-weight.bold}" },
-        "tracking": { "$value": "-0.02em" }
-      },
-      "desktop": {
-        "size": { "$value": "3.5rem" },
-        "line-height": { "$value": 1.1 }
-      }
-    },
     "h1": {
       "mobile": {
-        "size": { "$value": "2rem" },
-        "line-height": { "$value": 1.2 },
-        "weight": { "$value": "{font-weight.bold}" },
-        "tracking": { "$value": "-0.015em" }
-      },
-      "desktop": {
-        "size": { "$value": "2.75rem" },
-        "line-height": { "$value": 1.15 }
+        "size": { "$value": "3.5rem" },
+        "line-height": { "$value": 1.3 },
+        "weight": { "$value": "{font-weight.bold}" }
       }
     },
     "h2": {
       "mobile": {
-        "size": { "$value": "1.625rem" },
-        "line-height": { "$value": 1.25 },
-        "weight": { "$value": "{font-weight.bold}" },
-        "tracking": { "$value": "-0.01em" }
-      },
-      "desktop": {
-        "size": { "$value": "2.125rem" },
-        "line-height": { "$value": 1.2 }
+        "size": { "$value": "2.25rem" },
+        "line-height": { "$value": 1.3 },
+        "weight": { "$value": "{font-weight.bold}" }
       }
     },
     "h3": {
       "mobile": {
-        "size": { "$value": "1.375rem" },
-        "line-height": { "$value": 1.3 },
-        "weight": { "$value": "{font-weight.semibold}" }
-      },
-      "desktop": {
-        "size": { "$value": "1.5rem" },
-        "line-height": { "$value": 1.3 }
-      }
-    },
-    "h4": {
-      "mobile": {
-        "size": { "$value": "1.125rem" },
-        "line-height": { "$value": 1.4 },
-        "weight": { "$value": "{font-weight.semibold}" }
-      },
-      "desktop": {
         "size": { "$value": "1.25rem" },
-        "line-height": { "$value": 1.4 }
+        "line-height": { "$value": 1.3 },
+        "weight": { "$value": "{font-weight.bold}" }
       }
     },
     "body-lg": {
       "mobile": {
-        "size": { "$value": "1.125rem" },
-        "line-height": { "$value": 1.6 },
+        "size": { "$value": "1rem" },
+        "line-height": { "$value": 1.5 },
         "weight": { "$value": "{font-weight.regular}" }
       }
     },
-    "body": {
+    "body-lg-semibold": {
       "mobile": {
         "size": { "$value": "1rem" },
-        "line-height": { "$value": 1.6 },
-        "weight": { "$value": "{font-weight.regular}" }
+        "line-height": { "$value": 1.5 },
+        "weight": { "$value": "{font-weight.semibold}" }
       }
     },
     "body-sm": {
@@ -89,18 +51,10 @@
         "weight": { "$value": "{font-weight.regular}" }
       }
     },
-    "label": {
-      "mobile": {
-        "size": { "$value": "0.875rem" },
-        "line-height": { "$value": 1.4 },
-        "weight": { "$value": "{font-weight.semibold}" },
-        "tracking": { "$value": "0.02em" }
-      }
-    },
     "caption": {
       "mobile": {
         "size": { "$value": "0.75rem" },
-        "line-height": { "$value": 1.4 },
+        "line-height": { "$value": 1.3 },
         "weight": { "$value": "{font-weight.regular}" }
       }
     }

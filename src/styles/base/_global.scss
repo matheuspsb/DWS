@@ -5,7 +5,7 @@
 }
 
 body {
-  @include ds.text-style('body');
+  @include ds.text-style('body-lg');
   color: ds.color('text-default');
   background-color: ds.color('background-page');
 }
@@ -20,10 +20,6 @@ h2 {
 
 h3 {
   @include ds.text-style('h3');
-}
-
-h4 {
-  @include ds.text-style('h4');
 }
 
 a {

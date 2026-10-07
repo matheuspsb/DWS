@@ -11,7 +11,7 @@
   }
 
   &__brand {
-    @include ds.text-style('h4');
+    @include ds.text-style('h3');
     color: ds.color('text-default');
     text-decoration: none;
   }

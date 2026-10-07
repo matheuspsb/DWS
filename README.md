@@ -7,6 +7,7 @@ Front end challenge: a mobile-first blog built with React, Vite and SCSS (no UI 
 - React 19 + Vite + TypeScript
 - React Router (list and detail views)
 - SCSS with BEM naming and a token-based design system: JSON tokens in `tokens/` -> Style Dictionary -> CSS custom properties and a Sass map
+- Open Sans, self-hosted through `@fontsource/open-sans`
 - Vitest + React Testing Library
 
 ## Running
