@@ -7,7 +7,7 @@ Front end challenge: a mobile-first blog built with React, Vite and SCSS (no UI 
 - React 19 + Vite + TypeScript
 - React Router (list and detail views)
 - SCSS with BEM naming and a token-based design system: JSON tokens in `tokens/` -> Style Dictionary -> CSS custom properties and a Sass map
-- Open Sans, self-hosted through `@fontsource/open-sans`
+- Open Sans, self-hosted variable font through `@fontsource-variable/open-sans`
 - Vitest + React Testing Library
 
 ## Running
@@ -27,12 +27,13 @@ The app is served at http://localhost:5173. If that port is taken, Vite picks th
 
 The same setup runs before `npm run build`, `npm test`, `npm run lint` and `npm run typecheck`, so they also work on a fresh clone.
 
-| Script          | Description                  |
-| --------------- | ---------------------------- |
-| `npm start`     | Start the dev server         |
-| `npm run build` | Production build             |
-| `npm test`      | Run unit tests               |
-| `npm run lint`  | Lint the code                |
+| Script           | Description                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `npm start`      | Start the dev server                                                                 |
+| `npm run build`  | Production build                                                                     |
+| `npm test`       | Run unit tests                                                                       |
+| `npm run lint`   | Lint the code                                                                        |
+| `npm run format` | Format the code with Prettier (`npm run format:check` only verifies)                 |
 | `npm run tokens` | Regenerate SCSS from `tokens/*.json` (runs automatically before `start` and `build`) |
 
 ## Structure

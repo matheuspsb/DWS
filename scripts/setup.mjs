@@ -65,7 +65,10 @@ if (dependenciesMissing) {
   try {
     run(existsSync(join(root, 'package-lock.json')) ? 'npm ci' : 'npm install')
   } catch {
-    fail('Failed to install dependencies', '  Check your internet connection and run "npm install" manually.')
+    fail(
+      'Failed to install dependencies',
+      '  Check your internet connection and run "npm install" manually.',
+    )
   }
   const marker = join(root, 'node_modules', '.package-lock.json')
   if (existsSync(marker)) utimesSync(marker, new Date(), new Date())

@@ -12,8 +12,14 @@
   }
 }
 
+$-text-properties: (
+  'size': font-size,
+  'line-height': line-height,
+  'weight': font-weight,
+);
+
 @mixin -emit-text($props) {
-  @each $property, $css-property in ('size': font-size, 'line-height': line-height, 'weight': font-weight) {
+  @each $property, $css-property in $-text-properties {
     @if map.has-key($props, $property) {
       #{$css-property}: map.get($props, $property);
     }
