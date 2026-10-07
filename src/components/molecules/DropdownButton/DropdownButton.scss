@@ -34,7 +34,7 @@ $border-width: 1px;
   }
 
   &__toggle {
-    @include ds.text-style('caption-bold');
+    @include ds.text-style('label');
     gap: ds.space(1);
     min-width: 0;
     height: 100%;

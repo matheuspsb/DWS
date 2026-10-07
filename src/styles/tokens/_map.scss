@@ -107,9 +107,15 @@ $text-style-body-lg-semibold-mobile-weight: 600 !default;
 $text-style-body-sm-mobile-size: 0.875rem !default;
 $text-style-body-sm-mobile-line-height: 1.5 !default;
 $text-style-body-sm-mobile-weight: 400 !default;
-$text-style-caption-bold-mobile-size: 0.75rem !default;
-$text-style-caption-bold-mobile-line-height: 1.3 !default;
-$text-style-caption-bold-mobile-weight: 700 !default;
+$text-style-label-mobile-size: 0.75rem !default;
+$text-style-label-mobile-line-height: normal !default;
+$text-style-label-mobile-weight: 700 !default;
+$text-style-option-mobile-size: 0.875rem !default;
+$text-style-option-mobile-line-height: 1.25rem !default;
+$text-style-option-mobile-weight: 400 !default;
+$text-style-option-semibold-mobile-size: 0.875rem !default;
+$text-style-option-semibold-mobile-line-height: 1.25rem !default;
+$text-style-option-semibold-mobile-weight: 600 !default;
 $text-style-caption-mobile-size: 0.75rem !default;
 $text-style-caption-mobile-line-height: 1.3 !default;
 $text-style-caption-mobile-weight: 400 !default;
@@ -268,11 +274,25 @@ $tokens: (
         'weight': $text-style-body-sm-mobile-weight
       )
     ),
-    'caption-bold': (
+    'label': (
       'mobile': (
-        'size': $text-style-caption-bold-mobile-size,
-        'line-height': $text-style-caption-bold-mobile-line-height,
-        'weight': $text-style-caption-bold-mobile-weight
+        'size': $text-style-label-mobile-size,
+        'line-height': $text-style-label-mobile-line-height,
+        'weight': $text-style-label-mobile-weight
+      )
+    ),
+    'option': (
+      'mobile': (
+        'size': $text-style-option-mobile-size,
+        'line-height': $text-style-option-mobile-line-height,
+        'weight': $text-style-option-mobile-weight
+      )
+    ),
+    'option-semibold': (
+      'mobile': (
+        'size': $text-style-option-semibold-mobile-size,
+        'line-height': $text-style-option-semibold-mobile-line-height,
+        'weight': $text-style-option-semibold-mobile-weight
       )
     ),
     'caption': (
