@@ -12,11 +12,19 @@ Front end challenge: a mobile-first blog built with React, Vite and SCSS (no UI 
 ## Running
 
 ```bash
-npm install
 npm start
 ```
 
-The app is served at http://localhost:5173.
+That is the only command you need. The project ships with a setup script that prepares everything automatically, so there is no `npm install` step and nothing to configure by hand. On every run it:
+
+1. checks that your Node.js version is supported (22.12 or newer);
+2. installs the dependencies if they are missing or outdated;
+3. generates the design tokens from `tokens/*.json`;
+4. starts the dev server.
+
+The app is served at http://localhost:5173. If that port is taken, Vite picks the next free one and prints the URL in the terminal.
+
+The same setup runs before `npm run build`, `npm test`, `npm run lint` and `npm run typecheck`, so they also work on a fresh clone.
 
 | Script          | Description                  |
 | --------------- | ---------------------------- |
@@ -31,6 +39,7 @@ The app is served at http://localhost:5173.
 ```
 tokens/         Design tokens (JSON source of truth)
 sd.config.mjs   Style Dictionary configuration
+scripts/        setup.mjs: checks Node, installs dependencies when missing and generates tokens (run by the pre* npm hooks)
 src/
   api/          API client and endpoint functions
   components/   Reusable components
