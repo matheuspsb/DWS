@@ -6,9 +6,10 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "oxlint",
+    "typecheck": "tsc",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -27,6 +28,7 @@
     "jsdom": "^28.1.0",
     "oxlint": "^1.81.0",
     "sass": "^1.105.1",
+    "typescript": "^7.0.2",
     "vite": "^8.3.0",
     "vitest": "^5.0.3"
   }

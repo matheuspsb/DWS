@@ -4,7 +4,7 @@ Front end challenge: a mobile-first blog built with React, Vite and SCSS (no UI 
 
 ## Stack
 
-- React 19 + Vite
+- React 19 + Vite + TypeScript
 - React Router (list and detail views)
 - SCSS with BEM naming and shared tokens/mixins in `src/styles`
 - Vitest + React Testing Library
