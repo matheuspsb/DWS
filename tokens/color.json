@@ -78,6 +78,9 @@
     "accent-subtle": {
       "$value": "{palette.accent-light}"
     },
+    "on-accent": {
+      "$value": "{palette.neutral-extra-light}"
+    },
     "highlight": {
       "$value": "{palette.secondary-light}"
     },

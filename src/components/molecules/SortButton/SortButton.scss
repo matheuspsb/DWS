@@ -1,0 +1,33 @@
+@use 'styles' as ds;
+
+.sort-button {
+  @include ds.text-style('body-sm');
+  display: inline-flex;
+  align-items: center;
+  gap: ds.space(2);
+  height: 2rem;
+  padding: 0 ds.space(2);
+  border: 0;
+  border-radius: ds.radius('full');
+  background-color: transparent;
+  color: ds.color('text-muted');
+  cursor: pointer;
+  transition:
+    background-color ds.duration('fast') ds.easing('standard'),
+    color ds.duration('fast') ds.easing('standard');
+
+  > svg {
+    color: ds.color('accent');
+    transition: color ds.duration('fast') ds.easing('standard');
+  }
+
+  &:hover {
+    @include ds.text-style('body-sm-bold');
+    background-color: ds.color('accent');
+    color: ds.color('on-accent');
+
+    > svg {
+      color: ds.color('on-accent');
+    }
+  }
+}

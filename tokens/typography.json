@@ -110,6 +110,19 @@
         }
       }
     },
+    "body-sm-bold": {
+      "mobile": {
+        "size": {
+          "$value": "0.875rem"
+        },
+        "line-height": {
+          "$value": 1.5
+        },
+        "weight": {
+          "$value": "{font-weight.bold}"
+        }
+      }
+    },
     "meta": {
       "mobile": {
         "size": {

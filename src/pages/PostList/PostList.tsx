@@ -1,4 +1,5 @@
 import FilterDropdown from '../../components/organisms/FilterDropdown/FilterDropdown.tsx'
+import SortButton from '../../components/molecules/SortButton/SortButton.tsx'
 import PostCard from '../../components/organisms/PostCard/PostCard.tsx'
 import './PostList.scss'
 
@@ -27,6 +28,7 @@ export default function PostList() {
       <div className="post-list__filters">
         <FilterDropdown label="Category" options={categoryOptions} />
         <FilterDropdown label="Author" options={authorOptions} />
+        <SortButton />
       </div>
       <ul className="post-list__grid">
         {posts.map(({ id, ...post }) => (

@@ -29,6 +29,7 @@ $color-action-secondary-active: #8c1038 !default;
 $color-on-action-secondary: #f0f0f2 !default;
 $color-accent: #009598 !default;
 $color-accent-subtle: #00bfc1 !default;
+$color-on-accent: #e0e2e6 !default;
 $color-highlight: #ef4c84 !default;
 $color-disabled-background: #e0e2e6 !default;
 $color-disabled-text: #9ea0a5 !default;
@@ -118,6 +119,9 @@ $text-style-body-lg-semibold-mobile-weight: 600 !default;
 $text-style-body-sm-mobile-size: 0.875rem !default;
 $text-style-body-sm-mobile-line-height: 1.5 !default;
 $text-style-body-sm-mobile-weight: 400 !default;
+$text-style-body-sm-bold-mobile-size: 0.875rem !default;
+$text-style-body-sm-bold-mobile-line-height: 1.5 !default;
+$text-style-body-sm-bold-mobile-weight: 700 !default;
 $text-style-meta-mobile-size: 0.875rem !default;
 $text-style-meta-mobile-line-height: normal !default;
 $text-style-meta-mobile-weight: 400 !default;
@@ -162,6 +166,7 @@ $tokens: (
     'on-action-secondary': $color-on-action-secondary,
     'accent': $color-accent,
     'accent-subtle': $color-accent-subtle,
+    'on-accent': $color-on-accent,
     'highlight': $color-highlight,
     'disabled-background': $color-disabled-background,
     'disabled-text': $color-disabled-text
@@ -307,6 +312,13 @@ $tokens: (
         'size': $text-style-body-sm-mobile-size,
         'line-height': $text-style-body-sm-mobile-line-height,
         'weight': $text-style-body-sm-mobile-weight
+      )
+    ),
+    'body-sm-bold': (
+      'mobile': (
+        'size': $text-style-body-sm-bold-mobile-size,
+        'line-height': $text-style-body-sm-bold-mobile-line-height,
+        'weight': $text-style-body-sm-bold-mobile-weight
       )
     ),
     'meta': (
