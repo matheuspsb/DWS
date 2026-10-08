@@ -1,0 +1,35 @@
+@use 'styles' as ds;
+
+$stroke-width: 1px;
+
+.filter-panel {
+  width: 100%;
+  margin: 0;
+  padding: calc(#{ds.space(4)} - #{$stroke-width});
+  border: $stroke-width solid ds.color('border-default');
+  border-radius: ds.radius('lg');
+  background-color: ds.color('background-subtle');
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: ds.space(2);
+    color: ds.color('text-heading');
+  }
+
+  &__title {
+    @include ds.text-style('section-title');
+    margin: 0;
+  }
+
+  &__groups {
+    display: flex;
+    flex-direction: column;
+    gap: ds.space(8);
+    margin-top: ds.space(6);
+  }
+
+  &__apply {
+    margin-top: ds.space(8);
+  }
+}

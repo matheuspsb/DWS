@@ -19,6 +19,7 @@ $color-text-highlight: #d31450 !default;
 $color-border-default: #e0e2e6 !default;
 $color-border-strong: #c0c2c8 !default;
 $color-border-focus: #009598 !default;
+$color-border-accent: #006c6e !default;
 $color-action-primary: #020318 !default;
 $color-action-primary-hover: #060725 !default;
 $color-action-primary-active: #0b0e3a !default;
@@ -63,7 +64,7 @@ $radius-full: 9999px !default;
 $breakpoint-tablet: 48rem !default;
 $breakpoint-desktop: 64rem !default;
 $breakpoint-wide: 80rem !default;
-$container-max-width: 68.75rem !default;
+$container-max-width: 90rem !default;
 $z-index-base: 0 !default;
 $z-index-dropdown: 100 !default;
 $z-index-sticky: 200 !default;
@@ -110,6 +111,9 @@ $text-style-h3-mobile-weight: 700 !default;
 $text-style-title-mobile-size: 1.25rem !default;
 $text-style-title-mobile-line-height: normal !default;
 $text-style-title-mobile-weight: 700 !default;
+$text-style-section-title-mobile-size: 1.5rem !default;
+$text-style-section-title-mobile-line-height: 1.5rem !default;
+$text-style-section-title-mobile-weight: 600 !default;
 $text-style-body-lg-mobile-size: 1rem !default;
 $text-style-body-lg-mobile-line-height: 1.5 !default;
 $text-style-body-lg-mobile-weight: 400 !default;
@@ -156,6 +160,7 @@ $tokens: (
     'border-default': $color-border-default,
     'border-strong': $color-border-strong,
     'border-focus': $color-border-focus,
+    'border-accent': $color-border-accent,
     'action-primary': $color-action-primary,
     'action-primary-hover': $color-action-primary-hover,
     'action-primary-active': $color-action-primary-active,
@@ -291,6 +296,13 @@ $tokens: (
         'size': $text-style-title-mobile-size,
         'line-height': $text-style-title-mobile-line-height,
         'weight': $text-style-title-mobile-weight
+      )
+    ),
+    'section-title': (
+      'mobile': (
+        'size': $text-style-section-title-mobile-size,
+        'line-height': $text-style-section-title-mobile-line-height,
+        'weight': $text-style-section-title-mobile-weight
       )
     ),
     'body-lg': (

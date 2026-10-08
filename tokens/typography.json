@@ -71,6 +71,19 @@
         }
       }
     },
+    "section-title": {
+      "mobile": {
+        "size": {
+          "$value": "1.5rem"
+        },
+        "line-height": {
+          "$value": "1.5rem"
+        },
+        "weight": {
+          "$value": "{font-weight.semibold}"
+        }
+      }
+    },
     "body-lg": {
       "mobile": {
         "size": {

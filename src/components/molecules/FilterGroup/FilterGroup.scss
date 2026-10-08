@@ -1,0 +1,21 @@
+@use 'styles' as ds;
+
+.filter-group {
+  &__title {
+    @include ds.text-style('body-lg-semibold');
+    margin: 0;
+    color: ds.color('text-heading');
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__list > li {
+    display: flex;
+  }
+}

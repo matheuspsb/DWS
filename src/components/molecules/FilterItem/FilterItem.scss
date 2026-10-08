@@ -1,0 +1,46 @@
+@use 'styles' as ds;
+
+$stroke-width: 1px;
+
+.filter-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  padding: 0 ds.space(2);
+  border-bottom: $stroke-width solid ds.color('border-default');
+  color: ds.color('text-default');
+  cursor: pointer;
+
+  &__input {
+    @include ds.visually-hidden;
+  }
+
+  &__label {
+    @include ds.text-style('option');
+  }
+
+  &:hover {
+    color: ds.color('text-accent');
+  }
+
+  &:hover &__label,
+  &:has(&__input:checked) &__label {
+    @include ds.text-style('option-semibold');
+  }
+
+  &:has(&__input:checked) {
+    height: 2.75rem;
+    margin-block: 0.125rem;
+    padding: 0 calc(#{ds.space(2)} - #{$stroke-width});
+    border: $stroke-width solid ds.color('border-accent');
+    border-radius: ds.radius('md');
+    background-color: ds.color-alpha('accent-subtle', 5%);
+    color: ds.color('text-accent');
+  }
+
+  &:has(&__input:focus-visible) {
+    @include ds.focus-ring;
+  }
+}

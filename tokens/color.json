@@ -48,6 +48,9 @@
     "border-focus": {
       "$value": "{palette.accent-medium}"
     },
+    "border-accent": {
+      "$value": "{palette.accent-dark}"
+    },
     "action-primary": {
       "$value": "{palette.primary-dark}"
     },

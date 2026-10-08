@@ -1,22 +1,77 @@
 @use 'styles' as ds;
 
 .post-list {
+  &__header {
+    @include ds.up('desktop') {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
   &__filters {
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: ds.space(2);
     margin-top: ds.space(4);
+
+    @include ds.up('desktop') {
+      margin-top: 0;
+    }
+  }
+
+  &__pills {
+    display: contents;
+
+    @include ds.up('desktop') {
+      display: none;
+    }
+  }
+
+  &__sort-label {
+    display: none;
+
+    @include ds.up('desktop') {
+      @include ds.text-style('body-sm-bold');
+      display: inline;
+      margin-right: calc(-1 * #{ds.space(2)});
+      color: ds.color('text-muted');
+    }
+  }
+
+  &__body {
+    margin-top: ds.space(6);
+
+    @include ds.up('desktop') {
+      @include ds.grid;
+    }
+  }
+
+  &__sidebar {
+    display: none;
+
+    @include ds.up('desktop') {
+      display: block;
+      grid-column: 1 / span 3;
+      align-self: start;
+    }
   }
 
   &__grid {
     @include ds.grid;
-    margin: ds.space(6) 0 0;
+    margin: 0;
     padding: 0;
     list-style: none;
+
+    @include ds.up('desktop') {
+      grid-column: 4 / span 9;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   &__item {
-    @include ds.grid-item(4, 2, 4);
+    @include ds.grid-item(4, 2, 1);
   }
 }
