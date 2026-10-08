@@ -1,0 +1,46 @@
+@use 'styles' as ds;
+
+.icon-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: ds.radius('full');
+  cursor: pointer;
+
+  &--solid {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: ds.color('action-primary');
+    color: ds.color('on-action-primary');
+    transition: background-color ds.duration('fast') ds.easing('standard');
+
+    &:hover {
+      background-color: ds.color('action-primary-hover');
+    }
+
+    > svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &--plain {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: calc(-1 * #{ds.space(1)});
+    background: none;
+    color: ds.color('text-default');
+
+    > svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &--subtle {
+    color: ds.color('text-subtle');
+  }
+}

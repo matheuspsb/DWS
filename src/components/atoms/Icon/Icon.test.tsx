@@ -18,7 +18,7 @@ describe('Icon', () => {
   })
 
   it('draws a different shape for each icon', () => {
-    const names = ['chevron-down', 'close', 'arrow-left', 'sort'] as const
+    const names = ['chevron-down', 'close', 'arrow-left', 'sort', 'search'] as const
     const shapes = names.map((name) =>
       render(<Icon name={name} />)
         .container.querySelector('path')

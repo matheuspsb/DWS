@@ -22,6 +22,10 @@ h3 {
   @include ds.text-style('h3');
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 a {
   color: ds.color('text-link');
 

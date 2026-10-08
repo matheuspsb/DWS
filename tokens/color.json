@@ -58,7 +58,7 @@
       "$value": "{palette.primary-dark}"
     },
     "on-action-primary": {
-      "$value": "{palette.white}"
+      "$value": "{palette.neutral-lightest}"
     },
     "action-secondary": {
       "$value": "{palette.secondary-medium}"
