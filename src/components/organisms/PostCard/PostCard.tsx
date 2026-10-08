@@ -25,7 +25,13 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <article className="post-card">
-      <Link className="post-card__cover" to={to} aria-hidden="true" tabIndex={-1}>
+      <Link
+        className="post-card__cover"
+        to={to}
+        aria-hidden="true"
+        tabIndex={-1}
+        onMouseDown={(event) => event.preventDefault()}
+      >
         <img className="post-card__image" src={imageUrl || fallbackCover} alt="" loading="lazy" />
       </Link>
       <div className="post-card__content">

@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import fallbackCover from '../../../assets/fallback-cover.svg'
 import PostCard from './PostCard.tsx'
 
@@ -86,6 +87,35 @@ describe('PostCard', () => {
       expect(coverLink).toHaveAttribute('aria-hidden', 'true')
       expect(coverLink).toHaveAttribute('tabindex', '-1')
       expect(screen.getAllByRole('link')).toHaveLength(1)
+    })
+
+    describe('clicking the cover', () => {
+      const renderRoutes = () =>
+        render(
+          <MemoryRouter>
+            <Routes>
+              <Route path="/" element={<PostCard {...post} />} />
+              <Route path="/posts/7" element={<p>Post page</p>} />
+            </Routes>
+          </MemoryRouter>,
+        )
+
+      it('opens the post', async () => {
+        const { container } = renderRoutes()
+
+        await userEvent.click(container.querySelector('img')!)
+
+        expect(screen.getByText('Post page')).toBeInTheDocument()
+      })
+
+      it('does not move the focus to the link hidden from assistive technology', async () => {
+        const { container } = renderRoutes()
+        const coverLink = container.querySelector('img')!.closest('a')!
+
+        await userEvent.pointer({ keys: '[MouseLeft>]', target: coverLink })
+
+        expect(coverLink).not.toHaveFocus()
+      })
     })
 
     it('keeps the text area and the tags out of any link', () => {
