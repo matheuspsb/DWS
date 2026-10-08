@@ -1,0 +1,13 @@
+@use 'styles' as ds;
+
+// A single row: tags that do not fit are clipped so the card keeps its height.
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: ds.space(3);
+  max-height: 2rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+}

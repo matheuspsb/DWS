@@ -5,8 +5,10 @@
 
 $color-background-page: #ffffff !default;
 $color-background-subtle: #f0f0f2 !default;
+$color-background-muted: #e0e2e6 !default;
 $color-background-inverse: #060725 !default;
 $color-text-default: #202122 !default;
+$color-text-heading: #0b0e3a !default;
 $color-text-muted: #5e5f63 !default;
 $color-text-subtle: #7f8185 !default;
 $color-text-inverse: #ffffff !default;
@@ -98,6 +100,9 @@ $text-style-h2-mobile-weight: 700 !default;
 $text-style-h3-mobile-size: 1.25rem !default;
 $text-style-h3-mobile-line-height: 1.3 !default;
 $text-style-h3-mobile-weight: 700 !default;
+$text-style-title-mobile-size: 1.25rem !default;
+$text-style-title-mobile-line-height: normal !default;
+$text-style-title-mobile-weight: 700 !default;
 $text-style-body-lg-mobile-size: 1rem !default;
 $text-style-body-lg-mobile-line-height: 1.5 !default;
 $text-style-body-lg-mobile-weight: 400 !default;
@@ -107,6 +112,9 @@ $text-style-body-lg-semibold-mobile-weight: 600 !default;
 $text-style-body-sm-mobile-size: 0.875rem !default;
 $text-style-body-sm-mobile-line-height: 1.5 !default;
 $text-style-body-sm-mobile-weight: 400 !default;
+$text-style-meta-mobile-size: 0.875rem !default;
+$text-style-meta-mobile-line-height: normal !default;
+$text-style-meta-mobile-weight: 400 !default;
 $text-style-label-mobile-size: 0.75rem !default;
 $text-style-label-mobile-line-height: normal !default;
 $text-style-label-mobile-weight: 700 !default;
@@ -124,8 +132,10 @@ $tokens: (
   'color': (
     'background-page': $color-background-page,
     'background-subtle': $color-background-subtle,
+    'background-muted': $color-background-muted,
     'background-inverse': $color-background-inverse,
     'text-default': $color-text-default,
+    'text-heading': $color-text-heading,
     'text-muted': $color-text-muted,
     'text-subtle': $color-text-subtle,
     'text-inverse': $color-text-inverse,
@@ -253,6 +263,13 @@ $tokens: (
         'weight': $text-style-h3-mobile-weight
       )
     ),
+    'title': (
+      'mobile': (
+        'size': $text-style-title-mobile-size,
+        'line-height': $text-style-title-mobile-line-height,
+        'weight': $text-style-title-mobile-weight
+      )
+    ),
     'body-lg': (
       'mobile': (
         'size': $text-style-body-lg-mobile-size,
@@ -272,6 +289,13 @@ $tokens: (
         'size': $text-style-body-sm-mobile-size,
         'line-height': $text-style-body-sm-mobile-line-height,
         'weight': $text-style-body-sm-mobile-weight
+      )
+    ),
+    'meta': (
+      'mobile': (
+        'size': $text-style-meta-mobile-size,
+        'line-height': $text-style-meta-mobile-line-height,
+        'weight': $text-style-meta-mobile-weight
       )
     ),
     'label': (

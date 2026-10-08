@@ -59,6 +59,14 @@ $-text-properties: (
   outline-offset: 2px;
 }
 
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+}
+
 @mixin visually-hidden {
   position: absolute;
   width: 1px;

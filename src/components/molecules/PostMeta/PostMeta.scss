@@ -1,0 +1,31 @@
+@use 'styles' as ds;
+
+$dot-size: 0.3125rem;
+
+.post-meta {
+  @include ds.text-style('meta');
+  display: flex;
+  align-items: center;
+  gap: ds.space(2);
+  margin: 0;
+  color: ds.color('text-muted');
+
+  &__date {
+    flex: none;
+  }
+
+  &__dot {
+    flex: none;
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: ds.radius('full');
+    background-color: ds.color('text-highlight');
+  }
+
+  &__author {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
