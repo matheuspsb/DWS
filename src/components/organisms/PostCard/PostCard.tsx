@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import fallbackCover from '../../../assets/fallback-cover.svg'
 import PostMeta from '../../molecules/PostMeta/PostMeta.tsx'
 import TagList from '../../molecules/TagList/TagList.tsx'
 import './PostCard.scss'
@@ -9,7 +10,7 @@ interface PostCardProps {
   date: string
   author: string
   categories: string[]
-  imageUrl: string
+  imageUrl?: string | null
   to: string
 }
 
@@ -25,7 +26,7 @@ export default function PostCard({
   return (
     <article className="post-card">
       <Link className="post-card__cover" to={to} aria-hidden="true" tabIndex={-1}>
-        <img className="post-card__image" src={imageUrl} alt="" loading="lazy" />
+        <img className="post-card__image" src={imageUrl || fallbackCover} alt="" loading="lazy" />
       </Link>
       <div className="post-card__content">
         <PostMeta date={date} author={author} />

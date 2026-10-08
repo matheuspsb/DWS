@@ -31,7 +31,7 @@ export default function PostList() {
       <ul className="post-list__grid">
         {posts.map(({ id, ...post }) => (
           <li key={id}>
-            <PostCard {...post} imageUrl="/placeholder-cover.svg" to={`/posts/${id}`} />
+            <PostCard {...post} to={`/posts/${id}`} />
           </li>
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import fallbackCover from '../../../assets/fallback-cover.svg'
 import PostCard from './PostCard.tsx'
 
 const post = {
@@ -12,7 +13,7 @@ const post = {
   to: '/posts/7',
 }
 
-const renderCard = (props: Partial<typeof post> = {}) =>
+const renderCard = (props: Partial<Parameters<typeof PostCard>[0]> = {}) =>
   render(
     <MemoryRouter>
       <PostCard {...post} {...props} />
@@ -60,6 +61,15 @@ describe('PostCard', () => {
     expect(image).toHaveAttribute('loading', 'lazy')
     expect(image).toHaveAttribute('alt', '')
   })
+
+  it.each([undefined, null, ''])(
+    'falls back to the default cover when the image is %j',
+    (imageUrl) => {
+      const { container } = renderCard({ imageUrl })
+
+      expect(container.querySelector('img')).toHaveAttribute('src', fallbackCover)
+    },
+  )
 
   describe('links', () => {
     it('links the title to the post', () => {
