@@ -18,9 +18,13 @@ describe('Icon', () => {
   })
 
   it('draws a different shape for each icon', () => {
-    const chevron = render(<Icon name="chevron-down" />).container.querySelector('path')
-    const close = render(<Icon name="close" />).container.querySelector('path')
+    const names = ['chevron-down', 'close', 'arrow-left'] as const
+    const shapes = names.map((name) =>
+      render(<Icon name={name} />)
+        .container.querySelector('path')
+        ?.getAttribute('d'),
+    )
 
-    expect(chevron?.getAttribute('d')).not.toBe(close?.getAttribute('d'))
+    expect(new Set(shapes).size).toBe(names.length)
   })
 })
