@@ -16,7 +16,7 @@
       "$value": "{palette.neutral-darkest}"
     },
     "text-heading": {
-      "$value": "{palette.primary-light}"
+      "$value": "{palette.primary-dark}"
     },
     "text-muted": {
       "$value": "{palette.neutral-extra-dark}"
@@ -49,13 +49,13 @@
       "$value": "{palette.accent-medium}"
     },
     "action-primary": {
-      "$value": "{palette.primary-light}"
+      "$value": "{palette.primary-dark}"
     },
     "action-primary-hover": {
       "$value": "{palette.primary-medium}"
     },
     "action-primary-active": {
-      "$value": "{palette.primary-dark}"
+      "$value": "{palette.primary-light}"
     },
     "on-action-primary": {
       "$value": "{palette.neutral-lightest}"

@@ -1,0 +1,56 @@
+@use 'styles' as ds;
+
+$stroke-width: 1px;
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: ds.space(2);
+  width: 100%;
+  margin: 0;
+  border: $stroke-width solid ds.color('border-default');
+  border-radius: ds.radius('full');
+  background-color: transparent;
+  transition: border-color ds.duration('fast') ds.easing('standard');
+
+  &:hover,
+  &:focus-within {
+    border-color: ds.color('accent');
+  }
+
+  &--regular {
+    height: 3.5rem;
+    padding: 0 calc(#{ds.space(2)} - #{$stroke-width}) 0 calc(#{ds.space(4)} - #{$stroke-width});
+  }
+
+  &--compact {
+    height: 2.5rem;
+    padding: 0 calc(#{ds.space(4)} - #{$stroke-width});
+  }
+
+  &__input {
+    @include ds.text-style('body-lg');
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    color: ds.color('text-muted');
+    appearance: none;
+
+    &::placeholder {
+      color: ds.color('text-muted');
+      opacity: 1;
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+}

@@ -12,14 +12,17 @@ body {
 
 h1 {
   @include ds.text-style('h1');
+  color: ds.color('text-heading');
 }
 
 h2 {
   @include ds.text-style('h2');
+  color: ds.color('text-heading');
 }
 
 h3 {
   @include ds.text-style('h3');
+  color: ds.color('text-heading');
 }
 
 body:has(dialog[open]) {

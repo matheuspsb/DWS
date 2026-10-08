@@ -6,11 +6,41 @@
   min-height: 100vh;
 
   &__header {
-    padding: ds.space(4);
     border-bottom: 1px solid ds.color('border-default');
   }
 
+  &__header-inner {
+    @include ds.container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: ds.space(4);
+    padding-block: ds.space(4) calc(#{ds.space(4)} - 1px);
+
+    @include ds.up('tablet') {
+      @include ds.grid;
+    }
+  }
+
+  &__search {
+    @include ds.up('tablet') {
+      grid-column: 3 / span 2;
+    }
+
+    @include ds.up('desktop') {
+      grid-column: 8 / span 5;
+    }
+  }
+
   &__brand {
+    @include ds.up('tablet') {
+      grid-column: 1 / span 2;
+    }
+
+    @include ds.up('desktop') {
+      grid-column: 1 / span 7;
+    }
+
     @include ds.text-style('h3');
     color: ds.color('text-default');
     text-decoration: none;

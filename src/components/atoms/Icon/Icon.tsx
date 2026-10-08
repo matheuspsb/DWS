@@ -5,7 +5,7 @@ const paths = {
   close: 'M7 7l10 10M17 7L7 17',
   'arrow-left': 'M19 12H5M11 6l-6 6 6 6',
   sort: 'M8 19V5M4 9l4-4 4 4M16 5v14M12 15l4 4 4-4',
-  search: 'M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM21 21l-5.2-5.2',
+  search: 'M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM14.2 14.2l5.8 5.8',
 } as const
 
 export type IconName = keyof typeof paths
