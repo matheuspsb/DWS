@@ -41,8 +41,8 @@ export default function PostList() {
   }
 
   return (
-    <>
-      <div className="post-list__header">
+    <section className="post-list">
+      <header className="post-list__header">
         <h1>Posts</h1>
         <div className="post-list__filters">
           <div className="post-list__pills">
@@ -62,7 +62,7 @@ export default function PostList() {
           <span className="post-list__sort-label">Sort by:</span>
           <SortButton />
         </div>
-      </div>
+      </header>
       <div className="post-list__body">
         <aside className="post-list__sidebar">
           <FilterPanel
@@ -80,6 +80,6 @@ export default function PostList() {
           ))}
         </ul>
       </div>
-    </>
+    </section>
   )
 }
