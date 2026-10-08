@@ -1,9 +1,8 @@
-import { useRef, useState, type MouseEvent } from 'react'
-import { useControllableState } from '../../../hooks/useControllableState.ts'
-import { useDebouncedCallback } from '../../../hooks/useDebouncedCallback.ts'
+import { useModalDialog } from '../../../hooks/useModalDialog.ts'
 import Icon from '../../atoms/Icon/Icon.tsx'
 import IconButton from '../../atoms/IconButton/IconButton.tsx'
 import SearchField from '../../molecules/SearchField/SearchField.tsx'
+import { useSearchBar } from './hooks/useSearchBar.ts'
 import './SearchBar.scss'
 
 interface SearchBarProps {
@@ -17,62 +16,29 @@ interface SearchBarProps {
 
 export default function SearchBar({
   value,
-  defaultValue = '',
+  defaultValue,
   onChange,
   onSearch,
   suggestions = [],
-  debounceMs = 300,
+  debounceMs,
 }: SearchBarProps) {
-  const [query, setQuery] = useControllableState({ value, defaultValue, onChange })
-  const [isSheetOpen, setIsSheetOpen] = useState(false)
-  const sheetRef = useRef<HTMLDialogElement | null>(null)
-
-  const closeSheet = () => sheetRef.current?.close()
-
-  const lastSearch = useRef(query.trim())
-
-  const search = (text: string) => {
-    lastSearch.current = text.trim()
-    onSearch?.(lastSearch.current)
-  }
-
-  const searchIfChanged = (text: string) => {
-    if (text.trim() !== lastSearch.current) search(text)
-  }
-
-  const { debounced: searchLater, cancel: cancelSearch } = useDebouncedCallback(
-    searchIfChanged,
+  const { query, updateQuery, submit, searchFor, clear } = useSearchBar({
+    value,
+    defaultValue,
+    onChange,
+    onSearch,
     debounceMs,
-  )
+  })
+  const sheet = useModalDialog({ initialFocus: 'input' })
 
-  const searchNow = (text: string) => {
-    cancelSearch()
-    searchIfChanged(text)
+  const submitAndClose = (text: string) => {
+    submit(text)
+    sheet.close()
   }
 
-  const submit = (text: string) => {
-    cancelSearch()
-    search(text)
-    closeSheet()
-  }
-
-  const updateQuery = (text: string) => {
-    setQuery(text)
-    if (text.trim() === '') searchNow(text)
-    else searchLater(text)
-  }
-
-  const clear = (event: MouseEvent<HTMLButtonElement>) => {
-    setQuery('')
-    searchNow('')
-    event.currentTarget.form?.querySelector('input')?.focus()
-  }
-
-  const attachSheet = (dialog: HTMLDialogElement | null) => {
-    sheetRef.current = dialog
-    if (!dialog || dialog.open) return
-    dialog.showModal()
-    dialog.querySelector('input')?.focus()
+  const pickSuggestion = (text: string) => {
+    searchFor(text)
+    sheet.close()
   }
 
   return (
@@ -91,26 +57,21 @@ export default function SearchBar({
       </div>
 
       <div className="search-bar__open">
-        <IconButton label="Open search" onClick={() => setIsSheetOpen(true)}>
+        <IconButton label="Open search" onClick={sheet.open}>
           <Icon name="search" />
         </IconButton>
       </div>
 
-      {isSheetOpen && (
-        <dialog
-          ref={attachSheet}
-          className="search-bar__sheet"
-          aria-label="Search"
-          onClose={() => setIsSheetOpen(false)}
-        >
+      {sheet.isOpen && (
+        <dialog {...sheet.dialogProps} className="search-bar__sheet" aria-label="Search">
           <div className="search-bar__sheet-header">
             <SearchField
               size="compact"
               value={query}
               onChange={updateQuery}
-              onSubmit={submit}
+              onSubmit={submitAndClose}
               startAdornment={
-                <IconButton label="Close search" variant="plain" onClick={closeSheet}>
+                <IconButton label="Close search" variant="plain" onClick={sheet.close}>
                   <Icon name="arrow-left" />
                 </IconButton>
               }
@@ -127,10 +88,7 @@ export default function SearchBar({
                 <button
                   type="button"
                   className="search-bar__suggestion"
-                  onClick={() => {
-                    setQuery(suggestion)
-                    submit(suggestion)
-                  }}
+                  onClick={() => pickSuggestion(suggestion)}
                 >
                   {suggestion}
                 </button>
