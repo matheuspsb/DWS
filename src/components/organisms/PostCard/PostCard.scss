@@ -1,29 +1,16 @@
 @use 'styles' as ds;
 
-$card-width: 19.625rem;
-$card-height: 26.5625rem;
 $image-height: 12.25rem;
+$content-height: 14.3125rem;
+$stroke-width: 1px;
 
 .post-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: $card-width;
-  height: $card-height;
   overflow: hidden;
   border-radius: ds.radius('lg');
   background-color: ds.color('background-subtle');
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: $image-height 0 0;
-    border: 1px solid ds.color('border-default');
-    border-top: 0;
-    border-radius: 0 0 ds.radius('lg') ds.radius('lg');
-    pointer-events: none;
-  }
 
   &__cover {
     display: block;
@@ -32,17 +19,26 @@ $image-height: 12.25rem;
 
   &__image {
     width: 100%;
-    height: $image-height;
+    aspect-ratio: 9 / 4;
     object-fit: cover;
+
+    @include ds.up('tablet') {
+      height: $image-height;
+      aspect-ratio: auto;
+    }
   }
 
   &__content {
     display: flex;
-    flex: 1;
+    flex: none;
     flex-direction: column;
     gap: ds.space(4);
-    min-height: 0;
-    padding: ds.space(4);
+    height: $content-height;
+    padding: ds.space(4) calc(#{ds.space(4)} - #{$stroke-width})
+      calc(#{ds.space(4)} - #{$stroke-width});
+    border: $stroke-width solid ds.color('border-default');
+    border-top: 0;
+    border-radius: 0 0 ds.radius('lg') ds.radius('lg');
   }
 
   &__text {

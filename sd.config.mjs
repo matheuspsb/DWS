@@ -1,4 +1,4 @@
-const sassOnly = ['text-style', 'breakpoint', 'container', 'z-index']
+const sassOnly = ['text-style', 'breakpoint', 'container', 'grid', 'z-index']
 const buildPath = 'src/styles/tokens/'
 
 export default {

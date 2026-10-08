@@ -47,10 +47,36 @@ $-text-properties: (
   width: 100%;
   max-width: map.get(tokens.$tokens, 'container', 'max-width');
   margin-inline: auto;
-  padding-inline: fn.space(4);
+  padding-inline: map.get(tokens.$tokens, 'grid', 'mobile', 'margin');
+
+  @include up('desktop') {
+    padding-inline: map.get(tokens.$tokens, 'grid', 'desktop', 'margin');
+  }
+}
+
+@mixin grid {
+  $mobile: map.get(tokens.$tokens, 'grid', 'mobile');
+  $desktop: map.get(tokens.$tokens, 'grid', 'desktop');
+
+  display: grid;
+  grid-template-columns: repeat(map.get($mobile, 'columns'), minmax(0, 1fr));
+  gap: map.get($mobile, 'gutter');
+
+  @include up('desktop') {
+    grid-template-columns: repeat(map.get($desktop, 'columns'), minmax(0, 1fr));
+    gap: map.get($desktop, 'gutter');
+  }
+}
+
+@mixin grid-item($mobile, $tablet: $mobile, $desktop: $tablet) {
+  grid-column: span $mobile;
 
   @include up('tablet') {
-    padding-inline: fn.space(6);
+    grid-column: span $tablet;
+  }
+
+  @include up('desktop') {
+    grid-column: span $desktop;
   }
 }
 

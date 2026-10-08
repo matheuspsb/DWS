@@ -1,7 +1,5 @@
 @use 'styles' as ds;
 
-$card-width: 19.625rem;
-
 .post-list {
   &__filters {
     position: relative;
@@ -12,11 +10,13 @@ $card-width: 19.625rem;
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, #{$card-width}), #{$card-width}));
-    gap: ds.space(4);
+    @include ds.grid;
     margin: ds.space(6) 0 0;
     padding: 0;
     list-style: none;
+  }
+
+  &__item {
+    @include ds.grid-item(4, 2, 4);
   }
 }

@@ -62,13 +62,19 @@ $radius-full: 9999px !default;
 $breakpoint-tablet: 48rem !default;
 $breakpoint-desktop: 64rem !default;
 $breakpoint-wide: 80rem !default;
-$container-max-width: 70rem !default;
+$container-max-width: 68.75rem !default;
 $z-index-base: 0 !default;
 $z-index-dropdown: 100 !default;
 $z-index-sticky: 200 !default;
 $z-index-overlay: 300 !default;
 $z-index-modal: 400 !default;
 $z-index-toast: 500 !default;
+$grid-mobile-columns: 4 !default;
+$grid-mobile-margin: 1rem !default;
+$grid-mobile-gutter: 1rem !default;
+$grid-desktop-columns: 12 !default;
+$grid-desktop-margin: 3.5rem !default;
+$grid-desktop-gutter: 1.5rem !default;
 $palette-white: #ffffff !default;
 $palette-neutral-lightest: #f0f0f2 !default;
 $palette-neutral-extra-light: #e0e2e6 !default;
@@ -212,6 +218,18 @@ $tokens: (
     'overlay': $z-index-overlay,
     'modal': $z-index-modal,
     'toast': $z-index-toast
+  ),
+  'grid': (
+    'mobile': (
+      'columns': $grid-mobile-columns,
+      'margin': $grid-mobile-margin,
+      'gutter': $grid-mobile-gutter
+    ),
+    'desktop': (
+      'columns': $grid-desktop-columns,
+      'margin': $grid-desktop-margin,
+      'gutter': $grid-desktop-gutter
+    )
   ),
   'palette': (
     'white': $palette-white,

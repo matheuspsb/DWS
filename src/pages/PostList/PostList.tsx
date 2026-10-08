@@ -30,7 +30,7 @@ export default function PostList() {
       </div>
       <ul className="post-list__grid">
         {posts.map(({ id, ...post }) => (
-          <li key={id}>
+          <li key={id} className="post-list__item">
             <PostCard {...post} to={`/posts/${id}`} />
           </li>
         ))}
