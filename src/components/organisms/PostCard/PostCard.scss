@@ -26,10 +26,6 @@ $image-height: 12.25rem;
     pointer-events: none;
   }
 
-  &:has(&__link:focus-visible) {
-    @include ds.focus-ring;
-  }
-
   &__image {
     flex: none;
     width: 100%;
@@ -69,11 +65,8 @@ $image-height: 12.25rem;
     color: inherit;
     text-decoration: none;
 
-    // Stretched link: the whole card is clickable through the title.
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+    &:hover {
+      text-decoration: underline;
     }
   }
 

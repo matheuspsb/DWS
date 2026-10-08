@@ -91,6 +91,16 @@ describe('PostCard', () => {
       expect(screen.getByRole('link', { name: post.title })).toHaveAttribute('href', '/posts/7')
     })
 
+    it('only makes the title clickable, not the rest of the card', () => {
+      const { container } = renderCard({ to: '/posts/7', imageUrl: '/cover.jpg' })
+
+      expect(screen.getAllByRole('link')).toHaveLength(1)
+      expect(screen.getByText(post.excerpt).closest('a')).toBeNull()
+      expect(screen.getByText('Author Lastname').closest('a')).toBeNull()
+      expect(screen.getByText('Category 1').closest('a')).toBeNull()
+      expect(container.querySelector('img')?.closest('a')).toBeNull()
+    })
+
     it('does not render a link without a destination', () => {
       renderCard()
 
