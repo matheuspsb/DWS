@@ -15,7 +15,6 @@ $image-height: 12.25rem;
   border-radius: ds.radius('lg');
   background-color: ds.color('background-subtle');
 
-  // Inside stroke of the text area only: the design has no border over the image.
   &::after {
     content: '';
     position: absolute;
@@ -26,15 +25,15 @@ $image-height: 12.25rem;
     pointer-events: none;
   }
 
-  &__image {
+  &__cover {
+    display: block;
     flex: none;
+  }
+
+  &__image {
     width: 100%;
     height: $image-height;
     object-fit: cover;
-
-    &--empty {
-      background-color: ds.color('background-muted');
-    }
   }
 
   &__content {

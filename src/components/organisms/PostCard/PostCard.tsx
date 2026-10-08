@@ -9,9 +9,8 @@ interface PostCardProps {
   date: string
   author: string
   categories: string[]
-  imageUrl?: string
-  imageAlt?: string
-  to?: string
+  imageUrl: string
+  to: string
 }
 
 export default function PostCard({
@@ -21,27 +20,20 @@ export default function PostCard({
   author,
   categories,
   imageUrl,
-  imageAlt = '',
   to,
 }: PostCardProps) {
   return (
     <article className="post-card">
-      {imageUrl ? (
-        <img className="post-card__image" src={imageUrl} alt={imageAlt} loading="lazy" />
-      ) : (
-        <div className="post-card__image post-card__image--empty" />
-      )}
+      <Link className="post-card__cover" to={to} aria-hidden="true" tabIndex={-1}>
+        <img className="post-card__image" src={imageUrl} alt="" loading="lazy" />
+      </Link>
       <div className="post-card__content">
         <PostMeta date={date} author={author} />
         <div className="post-card__text">
           <h2 className="post-card__title">
-            {to ? (
-              <Link className="post-card__link" to={to}>
-                {title}
-              </Link>
-            ) : (
-              title
-            )}
+            <Link className="post-card__link" to={to}>
+              {title}
+            </Link>
           </h2>
           <p className="post-card__excerpt">{excerpt}</p>
         </div>

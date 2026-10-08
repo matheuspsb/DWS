@@ -8,9 +8,11 @@ const post = {
   date: '2024-01-20',
   author: 'Author Lastname',
   categories: ['Category 1', 'Category 2'],
+  imageUrl: '/cover.jpg',
+  to: '/posts/7',
 }
 
-const renderCard = (props: Partial<Parameters<typeof PostCard>[0]> = {}) =>
+const renderCard = (props: Partial<typeof post> = {}) =>
   render(
     <MemoryRouter>
       <PostCard {...post} {...props} />
@@ -25,15 +27,10 @@ describe('PostCard', () => {
     expect(within(article).getByRole('heading', { level: 2, name: post.title })).toBeInTheDocument()
   })
 
-  it('shows the excerpt', () => {
+  it('shows the excerpt, the formatted date and the author', () => {
     renderCard()
 
     expect(screen.getByText(post.excerpt)).toBeInTheDocument()
-  })
-
-  it('shows the formatted date and the author', () => {
-    renderCard()
-
     expect(screen.getByText('Jan 20, 2024')).toBeInTheDocument()
     expect(screen.getByText('Author Lastname')).toBeInTheDocument()
   })
@@ -55,56 +52,38 @@ describe('PostCard', () => {
     expect(screen.queryByRole('list', { name: 'Categories' })).not.toBeInTheDocument()
   })
 
-  describe('image', () => {
-    it('renders the cover image lazily', () => {
-      const { container } = renderCard({ imageUrl: '/cover.jpg' })
+  it('renders the cover image lazily and as decorative', () => {
+    const { container } = renderCard()
 
-      const image = container.querySelector('img')
-      expect(image).toHaveAttribute('src', '/cover.jpg')
-      expect(image).toHaveAttribute('loading', 'lazy')
-    })
-
-    it('is decorative by default', () => {
-      const { container } = renderCard({ imageUrl: '/cover.jpg' })
-
-      expect(container.querySelector('img')).toHaveAttribute('alt', '')
-    })
-
-    it('accepts a descriptive alt text', () => {
-      renderCard({ imageUrl: '/cover.jpg', imageAlt: 'A purple sky' })
-
-      expect(screen.getByRole('img', { name: 'A purple sky' })).toBeInTheDocument()
-    })
-
-    it('keeps the layout with a placeholder when there is no image', () => {
-      const { container } = renderCard()
-
-      expect(container.querySelector('img')).not.toBeInTheDocument()
-      expect(container.querySelector('.post-card__image--empty')).toBeInTheDocument()
-    })
+    const image = container.querySelector('img')
+    expect(image).toHaveAttribute('src', '/cover.jpg')
+    expect(image).toHaveAttribute('loading', 'lazy')
+    expect(image).toHaveAttribute('alt', '')
   })
 
-  describe('link', () => {
-    it('links the title to the post when a destination is given', () => {
-      renderCard({ to: '/posts/7' })
+  describe('links', () => {
+    it('links the title to the post', () => {
+      renderCard()
 
       expect(screen.getByRole('link', { name: post.title })).toHaveAttribute('href', '/posts/7')
     })
 
-    it('only makes the title clickable, not the rest of the card', () => {
-      const { container } = renderCard({ to: '/posts/7', imageUrl: '/cover.jpg' })
+    it('also links the cover image, hidden from assistive technology and the tab order', () => {
+      const { container } = renderCard()
 
+      const coverLink = container.querySelector('img')?.closest('a')
+      expect(coverLink).toHaveAttribute('href', '/posts/7')
+      expect(coverLink).toHaveAttribute('aria-hidden', 'true')
+      expect(coverLink).toHaveAttribute('tabindex', '-1')
       expect(screen.getAllByRole('link')).toHaveLength(1)
+    })
+
+    it('keeps the text area and the tags out of any link', () => {
+      renderCard()
+
       expect(screen.getByText(post.excerpt).closest('a')).toBeNull()
       expect(screen.getByText('Author Lastname').closest('a')).toBeNull()
       expect(screen.getByText('Category 1').closest('a')).toBeNull()
-      expect(container.querySelector('img')?.closest('a')).toBeNull()
-    })
-
-    it('does not render a link without a destination', () => {
-      renderCard()
-
-      expect(screen.queryByRole('link')).not.toBeInTheDocument()
     })
   })
 })
