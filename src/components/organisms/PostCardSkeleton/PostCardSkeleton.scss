@@ -1,8 +1,17 @@
 @use 'styles' as ds;
+@use '../PostCard/dimensions' as dim;
 
-@use 'dimensions' as dim;
+$pulse-duration: 1.5s;
+$line-height: 1rem;
+$tag-height: 2rem;
 
-.post-card {
+@keyframes post-card-skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.post-card-skeleton {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10,15 +19,10 @@
   border-radius: ds.radius('lg');
   background-color: ds.color('background-subtle');
 
-  &__cover {
-    display: block;
-    flex: none;
-  }
-
   &__image {
     width: 100%;
     aspect-ratio: 9 / 4;
-    object-fit: cover;
+    background-color: ds.color('background-muted');
 
     @include ds.up('tablet') {
       height: dim.$image-height;
@@ -44,30 +48,46 @@
     flex: 1;
     flex-direction: column;
     gap: ds.space(2);
-    min-height: 0;
   }
 
-  &__title {
-    @include ds.text-style('title');
-    @include ds.line-clamp(2);
-    margin: 0;
-    color: ds.color('text-heading');
+  &__line,
+  &__tag {
+    border-radius: ds.radius('full');
+    background-color: ds.color('background-muted');
   }
 
-  &__link {
-    color: inherit;
-    text-decoration: none;
+  &__line {
+    height: $line-height;
 
-    &:hover {
-      text-decoration: underline;
+    &--short {
+      width: 40%;
+    }
+
+    &--medium {
+      width: 70%;
+    }
+
+    &--title {
+      height: ds.space(5);
     }
   }
 
-  &__excerpt {
-    @include ds.text-style('body-sm');
-    @include ds.line-clamp(2);
-    flex: none;
-    margin: 0;
-    color: ds.color('text-default');
+  &__tags {
+    display: flex;
+    gap: ds.space(3);
+    margin-top: auto;
+  }
+
+  &__tag {
+    width: ds.space(20);
+    height: $tag-height;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &__image,
+    &__line,
+    &__tag {
+      animation: post-card-skeleton-pulse $pulse-duration ds.easing('standard') infinite;
+    }
   }
 }

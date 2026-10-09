@@ -7,12 +7,15 @@ import FilterPanel, {
   type FilterSelection,
 } from '../../components/organisms/FilterPanel/FilterPanel.tsx'
 import PostCard from '../../components/organisms/PostCard/PostCard.tsx'
+import PostCardSkeleton from '../../components/organisms/PostCardSkeleton/PostCardSkeleton.tsx'
 import { useAuthors } from '../../hooks/useAuthors.ts'
 import { useCategories } from '../../hooks/useCategories.ts'
 import { usePostFilters } from '../../hooks/usePostFilters.ts'
 import { usePosts } from '../../hooks/usePosts.ts'
 import { filterPosts } from '../../utils/postFilters.ts'
 import './PostList.scss'
+
+const skeletons = Array.from({ length: 6 }, (_, index) => index)
 
 export default function PostList() {
   const { filters, updateFilters } = usePostFilters()
@@ -69,7 +72,20 @@ export default function PostList() {
           />
         </aside>
         <div className="post-list__results">
-          {posts.isPending && <p role="status">Loading posts...</p>}
+          {posts.isPending && (
+            <>
+              <p role="status" className="post-list__loading">
+                Loading posts...
+              </p>
+              <ul className="post-list__grid" aria-hidden="true">
+                {skeletons.map((index) => (
+                  <li key={index} className="post-list__item">
+                    <PostCardSkeleton />
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {posts.isError && (
             <div role="alert" className="post-list__message">
               <p>We could not load the posts.</p>

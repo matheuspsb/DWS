@@ -67,6 +67,10 @@ $sort-label-clearance: 2px;
     }
   }
 
+  &__loading {
+    @include ds.visually-hidden;
+  }
+
   &__message {
     display: flex;
     flex-direction: column;
