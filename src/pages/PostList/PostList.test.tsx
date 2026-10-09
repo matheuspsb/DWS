@@ -5,7 +5,7 @@ import { mockApi } from '../../test/mockApi.ts'
 import { renderWithProviders } from '../../test/renderWithProviders.tsx'
 import PostList from './PostList.tsx'
 
-vi.mock('../../services/api.ts', () => ({ api: vi.fn() }))
+vi.mock('../../api/client.ts', () => ({ api: vi.fn() }))
 
 function Location() {
   const { pathname, search } = useLocation()

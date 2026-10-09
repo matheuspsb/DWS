@@ -3,7 +3,7 @@ import App from './App.tsx'
 import { mockApi } from './test/mockApi.ts'
 import { renderWithProviders } from './test/renderWithProviders.tsx'
 
-vi.mock('./services/api.ts', () => ({ api: vi.fn() }))
+vi.mock('./api/client.ts', () => ({ api: vi.fn() }))
 
 beforeEach(() => mockApi())
 

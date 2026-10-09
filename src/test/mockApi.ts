@@ -1,4 +1,4 @@
-import { api } from '../services/api.ts'
+import { api } from '../api/client.ts'
 import { authors, categories, posts } from './fixtures.ts'
 
 interface MockApiOptions {

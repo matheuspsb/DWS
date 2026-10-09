@@ -1,4 +1,4 @@
-import type { Post } from '../../../services/types.ts'
+import type { Post } from '../../../api/types.ts'
 import PostGrid from '../PostGrid/PostGrid.tsx'
 import './LatestArticles.scss'
 

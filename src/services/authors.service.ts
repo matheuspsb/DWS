@@ -1,5 +1,5 @@
-import { api, type RequestOptions } from './api.ts'
-import type { Author } from './types.ts'
+import { api, type RequestOptions } from '../api/client.ts'
+import type { Author } from '../api/types.ts'
 
 export function authorsService() {
   function getAuthors(options?: RequestOptions) {

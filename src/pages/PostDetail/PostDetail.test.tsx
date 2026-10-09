@@ -6,7 +6,7 @@ import { mockApi } from '../../test/mockApi.ts'
 import { renderWithProviders } from '../../test/renderWithProviders.tsx'
 import PostDetail from './PostDetail.tsx'
 
-vi.mock('../../services/api.ts', () => ({ api: vi.fn() }))
+vi.mock('../../api/client.ts', () => ({ api: vi.fn() }))
 
 const renderAt = (path: string) =>
   renderWithProviders(

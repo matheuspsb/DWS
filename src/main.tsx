@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import '@fontsource-variable/open-sans'
 import './styles/main.scss'
 import App from './App.tsx'
-import { queryClient } from './services/queryClient.ts'
+import { queryClient } from './api/queryClient.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

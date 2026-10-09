@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { renderHook, waitFor } from '@testing-library/react'
 import type { ReactNode } from 'react'
-import { api } from '../services/api.ts'
+import { api } from '../api/client.ts'
 import { useViewedPosts } from '../stores/viewedPosts.store.ts'
 import { posts } from '../test/fixtures.ts'
 import { useLatestArticles } from './useLatestArticles.ts'
 
-vi.mock('../services/api.ts', () => ({ api: vi.fn() }))
+vi.mock('../api/client.ts', () => ({ api: vi.fn() }))
 
 const manyPosts = Array.from({ length: 6 }, (_, index) => ({
   ...posts[0],

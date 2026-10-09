@@ -1,5 +1,5 @@
 import fallbackCover from '../../../assets/fallback-cover.svg'
-import type { Post } from '../../../services/types.ts'
+import type { Post } from '../../../api/types.ts'
 import PostByline from '../../molecules/PostByline/PostByline.tsx'
 import './PostArticle.scss'
 

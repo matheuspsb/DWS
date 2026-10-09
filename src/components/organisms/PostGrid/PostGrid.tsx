@@ -1,4 +1,4 @@
-import type { Post } from '../../../services/types.ts'
+import type { Post } from '../../../api/types.ts'
 import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage.tsx'
 import PostCard from '../PostCard/PostCard.tsx'
 import PostCardSkeleton from '../PostCardSkeleton/PostCardSkeleton.tsx'

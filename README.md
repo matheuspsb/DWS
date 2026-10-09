@@ -44,7 +44,8 @@ tokens/         Design tokens (JSON source of truth)
 sd.config.mjs   Style Dictionary configuration
 scripts/        setup.mjs: checks Node, installs dependencies when missing and generates tokens (run by the pre* npm hooks)
 src/
-  services/     REST client and one *.service.ts per resource (posts, authors, categories)
+  api/          REST client, API address, response types and the QueryClient setup
+  services/     One *.service.ts per resource (posts, authors, categories)
   components/   Atomic Design: atoms, molecules, organisms and templates
   stores/       Global state with Zustand (recent searches, viewed posts), persisted in localStorage
   hooks/        Reusable hooks (TanStack Query hooks, URL filters)
@@ -56,4 +57,4 @@ src/
 
 ## API
 
-Data comes from `https://tech-test-backend.dwsbrazil.io` (`/posts`, `/authors`, `/categories`). The address lives in `.env` (`VITE_API_URL`), which is committed because it is public and keeps `npm start` working on a fresh clone. Requests go through `src/services` and are cached by TanStack Query. The filters, search and sort order live in the URL (`/?category=...&author=...&q=...&sort=oldest`), so a filtered list can be shared.
+Data comes from `https://tech-test-backend.dwsbrazil.io` (`/posts`, `/authors`, `/categories`). The address is the default of `API_URL` in `src/api/config.ts`, so nothing needs to be configured; to point to another backend, set `VITE_API_URL` in a local `.env` file (git-ignored). The REST client, types and cache setup live in `src/api`, the endpoints in `src/services`, and requests are cached by TanStack Query. The filters, search and sort order live in the URL (`/?category=...&author=...&q=...&sort=oldest`), so a filtered list can be shared.

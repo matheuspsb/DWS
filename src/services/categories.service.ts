@@ -1,5 +1,5 @@
-import { api, type RequestOptions } from './api.ts'
-import type { Category } from './types.ts'
+import { api, type RequestOptions } from '../api/client.ts'
+import type { Category } from '../api/types.ts'
 
 export function categoriesService() {
   function getCategories(options?: RequestOptions) {

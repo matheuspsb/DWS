@@ -1,4 +1,4 @@
-import type { Author, Category, Post } from '../services/types.ts'
+import type { Author, Category, Post } from '../api/types.ts'
 
 const timestamps = { createdAt: '2024-01-20T10:00:00.000Z', updatedAt: '2024-01-20T10:00:00.000Z' }
 

@@ -1,5 +1,5 @@
-import { api, type RequestOptions } from './api.ts'
-import type { Post } from './types.ts'
+import { api, type RequestOptions } from '../api/client.ts'
+import type { Post } from '../api/types.ts'
 
 export function postsService() {
   function getPosts(options?: RequestOptions) {

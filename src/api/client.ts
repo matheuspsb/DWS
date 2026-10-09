@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_API_URL
+import { API_URL } from './config.ts'
 
 export interface RequestOptions {
   signal?: AbortSignal
@@ -15,7 +15,7 @@ export class ApiError extends Error {
 }
 
 export async function api<T>(path: string, { signal }: RequestOptions = {}): Promise<T> {
-  const response = await fetch(`${baseUrl}/${path}`, { signal })
+  const response = await fetch(`${API_URL}/${path}`, { signal })
   if (!response.ok) throw new ApiError(path, response.status)
   return response.json() as Promise<T>
 }
