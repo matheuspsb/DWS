@@ -1,6 +1,6 @@
 @use 'styles' as ds;
 
-$sort-label-clearance: 2px;
+$sort-label-clearance: 4px;
 $title-offset: 0.5rem;
 $title-to-body: 2.125rem;
 
@@ -42,6 +42,7 @@ $title-to-body: 2.125rem;
   &__sort {
     display: flex;
     align-items: center;
+    gap: ds.space(2);
     margin-left: auto;
   }
 
