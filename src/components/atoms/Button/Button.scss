@@ -4,7 +4,7 @@ $stroke-width: 1px;
 
 @mixin regular-size {
   @include ds.text-style('body-lg-semibold');
-  gap: ds.space(2);
+  gap: ds.space(3);
   height: auto;
   padding: calc(#{ds.space(3)} - #{$stroke-width}) calc(#{ds.space(4)} - #{$stroke-width});
 
