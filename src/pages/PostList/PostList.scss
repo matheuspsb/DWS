@@ -1,5 +1,7 @@
 @use 'styles' as ds;
 
+$sort-label-clearance: 2px;
+
 .post-list {
   &__header {
     @include ds.up('desktop') {
@@ -36,7 +38,7 @@
     @include ds.up('desktop') {
       @include ds.text-style('body-sm-bold');
       display: inline;
-      margin-right: calc(-1 * #{ds.space(2)});
+      margin-right: calc(#{$sort-label-clearance} - #{ds.space(2)});
       color: ds.color('text-muted');
     }
   }

@@ -26,7 +26,9 @@ export default function SortButton({ value, defaultValue = 'newest', onChange }:
       aria-label={`Sort: ${label}`}
       onClick={() => setOrder(order === 'newest' ? 'oldest' : 'newest')}
     >
-      {label}
+      <span className="sort-button__label" data-label={label}>
+        {label}
+      </span>
       <Icon name="sort" size={16} />
     </button>
   )
