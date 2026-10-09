@@ -3,7 +3,9 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-$color-background-page: #ffffff !default;
+$color-background-page: #f0f0f2 !default;
+$color-glow-pink: #ef4c84 !default;
+$color-glow-teal: #00bfc1 !default;
 $color-background-subtle: #f0f0f2 !default;
 $color-background-muted: #e0e2e6 !default;
 $color-background-inverse: #060725 !default;
@@ -145,6 +147,8 @@ $text-style-caption-mobile-weight: 400 !default;
 $tokens: (
   'color': (
     'background-page': $color-background-page,
+    'glow-pink': $color-glow-pink,
+    'glow-teal': $color-glow-teal,
     'background-subtle': $color-background-subtle,
     'background-muted': $color-background-muted,
     'background-inverse': $color-background-inverse,

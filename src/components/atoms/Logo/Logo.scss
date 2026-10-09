@@ -1,0 +1,7 @@
+@use 'styles' as ds;
+
+.logo {
+  display: block;
+  flex-shrink: 0;
+  color: ds.color('text-default');
+}

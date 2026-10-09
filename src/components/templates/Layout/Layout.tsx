@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
+import Logo from '../../atoms/Logo/Logo.tsx'
 import SearchBar from '../../organisms/SearchBar/SearchBar.tsx'
 import './Layout.scss'
 
@@ -10,7 +11,7 @@ export default function Layout() {
       <header className="layout__header">
         <div className="layout__header-inner">
           <Link to="/" className="layout__brand">
-            DWS Blog
+            <Logo />
           </Link>
           <div className="layout__search">
             <SearchBar suggestions={searchSuggestions} />

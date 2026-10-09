@@ -52,7 +52,9 @@
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --color-background-page: var(--palette-white);
+  --color-background-page: var(--palette-neutral-lightest);
+  --color-glow-pink: var(--palette-secondary-light);
+  --color-glow-teal: var(--palette-accent-light);
   --color-background-subtle: var(--palette-neutral-lightest);
   --color-background-muted: var(--palette-neutral-extra-light);
   --color-background-inverse: var(--palette-primary-medium);

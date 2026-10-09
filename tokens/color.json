@@ -1,7 +1,13 @@
 {
   "color": {
     "background-page": {
-      "$value": "{palette.white}"
+      "$value": "{palette.neutral-lightest}"
+    },
+    "glow-pink": {
+      "$value": "{palette.secondary-light}"
+    },
+    "glow-teal": {
+      "$value": "{palette.accent-light}"
     },
     "background-subtle": {
       "$value": "{palette.neutral-lightest}"

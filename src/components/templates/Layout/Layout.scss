@@ -41,8 +41,7 @@
       grid-column: 1 / span 7;
     }
 
-    @include ds.text-style('h3');
-    color: ds.color('text-default');
+    display: block;
     text-decoration: none;
   }
 
