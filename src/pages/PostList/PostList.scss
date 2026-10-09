@@ -1,13 +1,25 @@
 @use 'styles' as ds;
 
 $sort-label-clearance: 2px;
+$title-offset: 0.5rem;
+$title-to-body: 2.125rem;
 
 .post-list {
   &__header {
     @include ds.up('desktop') {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
+    }
+  }
+
+  &__title {
+    @include ds.visually-hidden;
+
+    @include ds.up('desktop') {
+      @include ds.visually-visible;
+      @include ds.text-style('h2');
+      margin-top: $title-offset;
     }
   }
 
@@ -17,11 +29,6 @@ $sort-label-clearance: 2px;
     flex-wrap: wrap;
     align-items: center;
     gap: ds.space(2);
-    margin-top: ds.space(4);
-
-    @include ds.up('desktop') {
-      margin-top: 0;
-    }
   }
 
   &__pills {
@@ -48,6 +55,7 @@ $sort-label-clearance: 2px;
 
     @include ds.up('desktop') {
       @include ds.grid;
+      margin-top: $title-to-body;
     }
   }
 

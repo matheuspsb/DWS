@@ -34,7 +34,7 @@ describe('PostList', () => {
       expect(screen.getByRole('status')).toHaveTextContent('Loading posts')
       expect(screen.queryAllByRole('article')).toHaveLength(0)
       expect(await screen.findAllByRole('article')).toHaveLength(3)
-      expect(screen.getByRole('heading', { level: 1, name: 'Posts' })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { level: 1, name: 'DWS blog' })).toBeInTheDocument()
     })
 
     it('shows what the api returned in each card', async () => {

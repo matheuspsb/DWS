@@ -24,7 +24,7 @@ export default function PostList() {
   return (
     <section className="post-list">
       <header className="post-list__header">
-        <h1>Posts</h1>
+        <h1 className="post-list__title">DWS blog</h1>
         <div className="post-list__filters">
           <div className="post-list__pills">
             <FilterDropdown

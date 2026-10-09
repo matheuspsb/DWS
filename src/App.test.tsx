@@ -11,7 +11,7 @@ describe('App routing', () => {
   it('renders the post list on the home route', async () => {
     renderWithProviders(<App />, '/')
 
-    expect(screen.getByRole('heading', { name: 'Posts' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'DWS blog' })).toBeInTheDocument()
     expect(await screen.findAllByRole('article')).toHaveLength(3)
   })
 
