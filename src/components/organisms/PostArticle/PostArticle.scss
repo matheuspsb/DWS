@@ -1,6 +1,7 @@
+@use 'sass:math';
 @use 'styles' as ds;
 
-$image-ratio: 875 / 384;
+$image-ratio: math.div(875, 384);
 
 .post-article {
   display: flex;
