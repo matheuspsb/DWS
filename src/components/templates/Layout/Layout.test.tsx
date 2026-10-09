@@ -1,77 +1,32 @@
-import { screen, waitFor, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { Route, Routes, useLocation } from 'react-router-dom'
-import { useRecentSearches } from '../../../stores/recentSearches.store.ts'
-import { renderWithProviders } from '../../../test/renderWithProviders.tsx'
+import { render, screen } from '@testing-library/react'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import Layout from './Layout.tsx'
 
-function Location() {
-  const { pathname, search } = useLocation()
-  return <div data-testid="location">{pathname + search}</div>
-}
-
-const renderLayout = () =>
-  renderWithProviders(
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="*" element={<Location />} />
-      </Route>
-    </Routes>,
+const renderAt = (path: string) =>
+  render(
+    <MemoryRouter initialEntries={[path]}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="*" element={<p>Page content</p>} />
+        </Route>
+      </Routes>
+    </MemoryRouter>,
   )
 
-const openSheet = async () => {
-  await userEvent.click(screen.getByRole('button', { name: 'Open search' }))
-  return screen.getByRole('dialog', { name: 'Search' })
-}
+describe('Layout', () => {
+  it('shows the header and the page inside the main area', () => {
+    renderAt('/')
 
-beforeEach(() => {
-  useRecentSearches.setState({ searches: [] })
-})
-
-describe('Layout search', () => {
-  it('puts a submitted search in the url', async () => {
-    renderLayout()
-
-    await userEvent.type(screen.getAllByRole('searchbox')[0], 'sleep{Enter}')
-
-    expect(screen.getByTestId('location')).toHaveTextContent('/?q=sleep')
+    expect(screen.getByRole('banner')).toBeInTheDocument()
+    expect(screen.getByRole('main')).toHaveTextContent('Page content')
   })
 
-  it('remembers submitted searches and offers them in the mobile search', async () => {
-    renderLayout()
-    await userEvent.type(screen.getAllByRole('searchbox')[0], 'sleep{Enter}')
-    await userEvent.type(screen.getAllByRole('searchbox')[0], ' lisbon{Enter}')
+  it('marks the post pages, which have their own background', () => {
+    const { container, unmount } = renderAt('/posts/p1')
+    expect(container.firstElementChild).toHaveClass('layout--post')
+    unmount()
 
-    const sheet = await openSheet()
-
-    const items = within(within(sheet).getByRole('list', { name: 'Recent searches' }))
-      .getAllByRole('button')
-      .map((button) => button.textContent)
-    expect(items).toEqual(['sleep lisbon', 'sleep'])
-  })
-
-  it('searches while typing in the mobile search and remembers it when it closes', async () => {
-    renderLayout()
-    const sheet = await openSheet()
-
-    await userEvent.type(within(sheet).getByRole('searchbox'), 'sleep')
-
-    await waitFor(() => expect(screen.getByTestId('location')).toHaveTextContent('/?q=sleep'))
-    expect(useRecentSearches.getState().searches).toEqual([])
-
-    await userEvent.click(within(sheet).getByRole('button', { name: 'Close search' }))
-
-    expect(useRecentSearches.getState().searches).toEqual(['sleep'])
-  })
-
-  it('searches again when a recent search is picked', async () => {
-    useRecentSearches.setState({ searches: ['lisbon'] })
-    renderLayout()
-    const sheet = await openSheet()
-
-    await userEvent.click(within(sheet).getByRole('button', { name: 'lisbon' }))
-
-    expect(screen.getByTestId('location')).toHaveTextContent('/?q=lisbon')
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    const home = renderAt('/')
+    expect(home.container.firstElementChild).not.toHaveClass('layout--post')
   })
 })

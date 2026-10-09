@@ -6,8 +6,9 @@ import LatestArticles from '../../components/organisms/LatestArticles/LatestArti
 import PostArticle from '../../components/organisms/PostArticle/PostArticle.tsx'
 import PostArticleSkeleton from '../../components/organisms/PostArticleSkeleton/PostArticleSkeleton.tsx'
 import { useLatestArticles } from '../../hooks/useLatestArticles.ts'
-import { usePost } from '../../hooks/usePosts.ts'
+import { usePost } from '../../hooks/usePost.ts'
 import { useRecordView } from '../../hooks/useRecordView.ts'
+import { routes } from '../../routes.ts'
 import './PostDetail.scss'
 
 export default function PostDetail() {
@@ -24,7 +25,7 @@ export default function PostDetail() {
           variant="secondary"
           compactOnMobile
           startIcon={<Icon name="arrow-left" />}
-          onClick={() => navigate('/')}
+          onClick={() => navigate(routes.home)}
         >
           Back
         </Button>

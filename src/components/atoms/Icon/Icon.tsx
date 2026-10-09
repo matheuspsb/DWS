@@ -1,3 +1,4 @@
+import { classNames } from '../../../utils/classNames.ts'
 import './Icon.scss'
 
 const paths = {
@@ -19,7 +20,7 @@ interface IconProps {
 export default function Icon({ name, size = 24 }: IconProps) {
   return (
     <svg
-      className={`icon icon--${name}`}
+      className={classNames('icon', `icon--${name}`)}
       width={size}
       height={size}
       viewBox="0 0 24 24"

@@ -1,9 +1,13 @@
 @use 'styles' as ds;
 
-.post-grid {
+.post-grid-skeleton {
   @include ds.card-grid;
 
   &__item {
     @include ds.card-grid-item;
+  }
+
+  &__status {
+    @include ds.visually-hidden;
   }
 }

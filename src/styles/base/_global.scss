@@ -40,3 +40,9 @@ a {
 :focus-visible {
   @include ds.focus-ring;
 }
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

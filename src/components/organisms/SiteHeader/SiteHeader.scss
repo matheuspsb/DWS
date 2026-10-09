@@ -1,0 +1,41 @@
+@use 'styles' as ds;
+
+.site-header {
+  border-bottom: 1px solid ds.color('border-default');
+
+  &__inner {
+    @include ds.container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: ds.space(4);
+    padding-block: ds.space(4) calc(#{ds.space(4)} - 1px);
+
+    @include ds.up('tablet') {
+      @include ds.grid;
+    }
+  }
+
+  &__search {
+    @include ds.up('tablet') {
+      grid-column: 3 / span 2;
+    }
+
+    @include ds.up('desktop') {
+      grid-column: 8 / span 5;
+    }
+  }
+
+  &__brand {
+    @include ds.up('tablet') {
+      grid-column: 1 / span 2;
+    }
+
+    @include ds.up('desktop') {
+      grid-column: 1 / span 7;
+    }
+
+    display: block;
+    text-decoration: none;
+  }
+}

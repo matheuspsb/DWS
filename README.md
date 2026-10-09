@@ -1,4 +1,4 @@
-﻿# DWS Blog
+# DWS Blog
 
 Front end challenge: a mobile-first blog built with React, Vite and SCSS (no UI libraries).
 

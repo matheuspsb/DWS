@@ -80,6 +80,29 @@ $-text-properties: (
   }
 }
 
+@mixin card-grid {
+  @include grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include up('desktop') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@mixin card-grid-item {
+  @include grid-item(4, 2, 1);
+}
+
+@mixin skeleton {
+  background-color: fn.color('background-muted');
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: skeleton-pulse 1.5s fn.easing('standard') infinite;
+  }
+}
+
 @mixin focus-ring {
   outline: 2px solid fn.color('border-focus');
   outline-offset: 2px;

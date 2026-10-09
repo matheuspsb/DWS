@@ -1,13 +1,6 @@
 @use 'styles' as ds;
 
-$pulse-duration: 1.5s;
 $image-ratio: 875 / 384;
-
-@keyframes post-article-skeleton-pulse {
-  50% {
-    opacity: 0.5;
-  }
-}
 
 .post-article-skeleton {
   display: flex;
@@ -18,7 +11,7 @@ $image-ratio: 875 / 384;
   &__avatar,
   &__image,
   &__line {
-    background-color: ds.color('background-muted');
+    @include ds.skeleton;
   }
 
   &__title {
@@ -79,15 +72,6 @@ $image-ratio: 875 / 384;
 
     &--short {
       width: 40%;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    &__title,
-    &__avatar,
-    &__image,
-    &__line {
-      animation: post-article-skeleton-pulse $pulse-duration ds.easing('standard') infinite;
     }
   }
 }

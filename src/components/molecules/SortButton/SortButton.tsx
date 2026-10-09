@@ -3,8 +3,6 @@ import type { SortOrder } from '../../../utils/postFilters.ts'
 import Icon from '../../atoms/Icon/Icon.tsx'
 import './SortButton.scss'
 
-export type { SortOrder }
-
 const labels: Record<SortOrder, string> = {
   newest: 'Newest first',
   oldest: 'Oldest first',

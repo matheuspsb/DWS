@@ -12,6 +12,7 @@ interface SearchBarProps {
   onSearch?: (query: string) => void
   onSubmit?: (query: string) => void
   suggestions?: string[]
+  suggestionsLabel?: string
   debounceMs?: number
 }
 
@@ -22,6 +23,7 @@ export default function SearchBar({
   onSearch,
   onSubmit,
   suggestions = [],
+  suggestionsLabel = 'Suggestions',
   debounceMs,
 }: SearchBarProps) {
   const { query, updateQuery, submit, searchFor, clear, commit } = useSearchBar({
@@ -85,9 +87,9 @@ export default function SearchBar({
               }
             />
           </div>
-          <ul className="search-bar__suggestions" aria-label="Recent searches">
-            {suggestions.map((suggestion, index) => (
-              <li key={`${suggestion}-${index}`}>
+          <ul className="search-bar__suggestions" aria-label={suggestionsLabel}>
+            {suggestions.map((suggestion) => (
+              <li key={suggestion}>
                 <button
                   type="button"
                   className="search-bar__suggestion"

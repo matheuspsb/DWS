@@ -3,17 +3,13 @@ import { useControllableState } from '../../../hooks/useControllableState.ts'
 import { useDismiss, type DismissReason } from '../../../hooks/useDismiss.ts'
 import { toggleItem } from '../../../utils/toggleItem.ts'
 import DropdownButton from '../../molecules/DropdownButton/DropdownButton.tsx'
+import type { FilterChoice } from '../../molecules/FilterGroup/FilterGroup.tsx'
 import FilterOption from '../../molecules/FilterOption/FilterOption.tsx'
 import './FilterDropdown.scss'
 
-export interface FilterOptionItem {
-  id: string
-  label: string
-}
-
 interface FilterDropdownProps {
   label: string
-  options: FilterOptionItem[]
+  options: FilterChoice[]
   value?: string[]
   defaultValue?: string[]
   onChange?: (value: string[]) => void

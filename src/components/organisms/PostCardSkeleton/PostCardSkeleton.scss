@@ -1,15 +1,8 @@
 @use 'styles' as ds;
 @use '../PostCard/dimensions' as dim;
 
-$pulse-duration: 1.5s;
 $line-height: 1rem;
 $tag-height: 2rem;
-
-@keyframes post-card-skeleton-pulse {
-  50% {
-    opacity: 0.5;
-  }
-}
 
 .post-card-skeleton {
   display: flex;
@@ -22,7 +15,7 @@ $tag-height: 2rem;
   &__image {
     width: 100%;
     aspect-ratio: 9 / 4;
-    background-color: ds.color('background-muted');
+    @include ds.skeleton;
 
     @include ds.up('tablet') {
       height: dim.$image-height;
@@ -53,7 +46,7 @@ $tag-height: 2rem;
   &__line,
   &__tag {
     border-radius: ds.radius('full');
-    background-color: ds.color('background-muted');
+    @include ds.skeleton;
   }
 
   &__line {
@@ -81,13 +74,5 @@ $tag-height: 2rem;
   &__tag {
     width: ds.space(20);
     height: $tag-height;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    &__image,
-    &__line,
-    &__tag {
-      animation: post-card-skeleton-pulse $pulse-duration ds.easing('standard') infinite;
-    }
   }
 }

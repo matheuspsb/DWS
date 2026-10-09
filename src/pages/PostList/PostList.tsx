@@ -1,7 +1,9 @@
+import ErrorMessage from '../../components/molecules/ErrorMessage/ErrorMessage.tsx'
 import SortButton from '../../components/molecules/SortButton/SortButton.tsx'
 import FilterDropdown from '../../components/organisms/FilterDropdown/FilterDropdown.tsx'
 import FilterPanel from '../../components/organisms/FilterPanel/FilterPanel.tsx'
 import PostGrid from '../../components/organisms/PostGrid/PostGrid.tsx'
+import PostGridSkeleton from '../../components/organisms/PostGridSkeleton/PostGridSkeleton.tsx'
 import { usePosts } from '../../hooks/usePosts.ts'
 import { filterPosts } from '../../utils/postFilters.ts'
 import { usePostListFilters } from './hooks/usePostListFilters.ts'
@@ -20,6 +22,7 @@ export default function PostList() {
     apply,
   } = usePostListFilters()
   const posts = usePosts()
+  const visiblePosts = filterPosts(posts.data ?? [], filters)
 
   return (
     <section className="post-list">
@@ -49,12 +52,14 @@ export default function PostList() {
           <FilterPanel groups={groups} value={panelValue} onChange={setDraft} onApply={apply} />
         </aside>
         <div className="post-list__results">
-          <PostGrid
-            posts={filterPosts(posts.data ?? [], filters)}
-            isLoading={posts.isPending}
-            isError={posts.isError}
-            onRetry={() => posts.refetch()}
-          />
+          {posts.isPending && <PostGridSkeleton />}
+          {posts.isError && (
+            <ErrorMessage message="We could not load the posts." onRetry={() => posts.refetch()} />
+          )}
+          {posts.isSuccess && visiblePosts.length === 0 && (
+            <p role="status">No posts match your filters.</p>
+          )}
+          {posts.isSuccess && visiblePosts.length > 0 && <PostGrid posts={visiblePosts} />}
         </div>
       </div>
     </section>

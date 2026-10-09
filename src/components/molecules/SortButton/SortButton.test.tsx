@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
-import SortButton, { type SortOrder } from './SortButton.tsx'
+import type { SortOrder } from '../../../utils/postFilters.ts'
+import SortButton from './SortButton.tsx'
 
 describe('SortButton', () => {
   it('starts with the newest posts first', () => {
