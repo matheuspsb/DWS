@@ -47,6 +47,7 @@
   --palette-accent-light: #00bfc1;
   --palette-accent-medium: #009598;
   --palette-accent-dark: #006c6e;
+  --palette-indigo: #123397;
   --font-family-sans: 'Open Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-family-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --font-weight-regular: 400;
@@ -80,4 +81,5 @@
   --color-on-accent: var(--palette-neutral-extra-light);
   --color-disabled-background: var(--palette-neutral-extra-light);
   --color-disabled-text: var(--palette-neutral-medium);
+  --color-glow-indigo: var(--palette-indigo);
 }

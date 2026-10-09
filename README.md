@@ -45,7 +45,7 @@ scripts/        setup.mjs: checks Node, installs dependencies when missing and g
 src/
   services/     REST client and one *.service.ts per resource (posts, authors, categories)
   components/   Atomic Design: atoms, molecules, organisms and templates
-  context/      Global state (recent searches: Context + useReducer + localStorage)
+  stores/       Global state with Zustand (recent searches, viewed posts), persisted in localStorage
   hooks/        Reusable hooks (TanStack Query hooks, URL filters)
   pages/        Route-level views (PostList, PostDetail)
   styles/       Design system (tokens, functions/mixins, base styles)

@@ -22,6 +22,17 @@
     "h1": {
       "mobile": {
         "size": {
+          "$value": "1.75rem"
+        },
+        "line-height": {
+          "$value": 1.3
+        },
+        "weight": {
+          "$value": "{font-weight.bold}"
+        }
+      },
+      "desktop": {
+        "size": {
           "$value": "3.5rem"
         },
         "line-height": {
@@ -195,6 +206,78 @@
         },
         "line-height": {
           "$value": 1.3
+        },
+        "weight": {
+          "$value": "{font-weight.regular}"
+        }
+      }
+    },
+    "h2-semibold": {
+      "mobile": {
+        "size": {
+          "$value": "1.5rem"
+        },
+        "line-height": {
+          "$value": 1.3
+        },
+        "weight": {
+          "$value": "{font-weight.semibold}"
+        }
+      },
+      "desktop": {
+        "size": {
+          "$value": "2.25rem"
+        },
+        "line-height": {
+          "$value": 1.3
+        },
+        "weight": {
+          "$value": "{font-weight.semibold}"
+        }
+      }
+    },
+    "article": {
+      "mobile": {
+        "size": {
+          "$value": "0.875rem"
+        },
+        "line-height": {
+          "$value": "1.375rem"
+        },
+        "weight": {
+          "$value": "{font-weight.regular}"
+        }
+      },
+      "desktop": {
+        "size": {
+          "$value": "1rem"
+        },
+        "line-height": {
+          "$value": "1.625rem"
+        },
+        "weight": {
+          "$value": "{font-weight.regular}"
+        }
+      }
+    },
+    "byline": {
+      "mobile": {
+        "size": {
+          "$value": "0.75rem"
+        },
+        "line-height": {
+          "$value": 1.5
+        },
+        "weight": {
+          "$value": "{font-weight.regular}"
+        }
+      },
+      "desktop": {
+        "size": {
+          "$value": "1rem"
+        },
+        "line-height": {
+          "$value": 1.5
         },
         "weight": {
           "$value": "{font-weight.regular}"

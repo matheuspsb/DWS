@@ -5,16 +5,13 @@ import { BrowserRouter } from 'react-router-dom'
 import '@fontsource-variable/open-sans'
 import './styles/main.scss'
 import App from './App.tsx'
-import RecentSearchesProvider from './context/RecentSearchesProvider.tsx'
 import { queryClient } from './services/queryClient.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <RecentSearchesProvider>
-          <App />
-        </RecentSearchesProvider>
+        <App />
       </BrowserRouter>
     </QueryClientProvider>
   </StrictMode>,

@@ -1,5 +1,5 @@
 import type { Post } from '../../../services/types.ts'
-import Button from '../../atoms/Button/Button.tsx'
+import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage.tsx'
 import PostCard from '../PostCard/PostCard.tsx'
 import PostCardSkeleton from '../PostCardSkeleton/PostCardSkeleton.tsx'
 import './PostGrid.scss'
@@ -14,16 +14,7 @@ interface PostGridProps {
 }
 
 export default function PostGrid({ posts, isLoading, isError, onRetry }: PostGridProps) {
-  if (isError) {
-    return (
-      <div role="alert" className="post-grid__message">
-        <p>We could not load the posts.</p>
-        <Button variant="secondary" onClick={onRetry}>
-          Try again
-        </Button>
-      </div>
-    )
-  }
+  if (isError) return <ErrorMessage message="We could not load the posts." onRetry={onRetry} />
 
   if (isLoading) {
     return (

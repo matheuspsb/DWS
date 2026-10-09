@@ -1,0 +1,93 @@
+@use 'styles' as ds;
+
+$pulse-duration: 1.5s;
+$image-ratio: 875 / 384;
+
+@keyframes post-article-skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.post-article-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: ds.space(6);
+
+  &__title,
+  &__avatar,
+  &__image,
+  &__line {
+    background-color: ds.color('background-muted');
+  }
+
+  &__title {
+    height: 4.5rem;
+    border-radius: ds.radius('lg');
+
+    @include ds.up('tablet') {
+      height: 9.125rem;
+    }
+  }
+
+  &__byline {
+    display: flex;
+    align-items: center;
+    gap: ds.space(3);
+    margin-top: calc(#{ds.space(3)} - #{ds.space(6)});
+
+    @include ds.up('tablet') {
+      gap: ds.space(4);
+      margin-top: 0;
+    }
+  }
+
+  &__avatar {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: ds.radius('full');
+
+    @include ds.up('tablet') {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  &__byline-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: ds.space(2);
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: $image-ratio;
+    border-radius: ds.radius('lg');
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: ds.space(3);
+  }
+
+  &__line {
+    height: 1rem;
+    border-radius: ds.radius('full');
+
+    &--short {
+      width: 40%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &__title,
+    &__avatar,
+    &__image,
+    &__line {
+      animation: post-article-skeleton-pulse $pulse-duration ds.easing('standard') infinite;
+    }
+  }
+}

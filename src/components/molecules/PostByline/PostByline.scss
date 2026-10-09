@@ -1,0 +1,32 @@
+@use 'styles' as ds;
+
+.post-byline {
+  display: flex;
+  align-items: center;
+  gap: ds.space(3);
+
+  @include ds.up('tablet') {
+    gap: ds.space(4);
+  }
+
+  &__text {
+    @include ds.text-style('byline');
+    display: flex;
+    flex-direction: column;
+    gap: ds.space(1);
+  }
+
+  &__author {
+    margin: 0;
+    color: ds.color('text-default');
+
+    strong {
+      font-weight: 600;
+      color: ds.color('text-heading');
+    }
+  }
+
+  &__date {
+    color: ds.color('text-muted');
+  }
+}

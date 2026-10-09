@@ -1,0 +1,38 @@
+@use 'styles' as ds;
+
+.post-detail {
+  display: flex;
+  flex-direction: column;
+  gap: ds.space(6);
+
+  @include ds.up('desktop') {
+    @include ds.grid;
+    padding-top: ds.space(4);
+  }
+
+  &__back {
+    @include ds.up('desktop') {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: ds.space(8);
+
+    @include ds.up('tablet') {
+      gap: ds.space(12);
+    }
+
+    @include ds.up('desktop') {
+      grid-column: 3 / span 8;
+      grid-row: 1;
+    }
+  }
+
+  &__loading {
+    @include ds.visually-hidden;
+  }
+}

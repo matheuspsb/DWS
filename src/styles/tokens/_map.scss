@@ -31,6 +31,7 @@ $color-accent: #009598 !default;
 $color-on-accent: #e0e2e6 !default;
 $color-disabled-background: #e0e2e6 !default;
 $color-disabled-text: #9ea0a5 !default;
+$color-glow-indigo: #123397 !default;
 $shadow-sm: 0 1px 2px rgb(2 3 24 / 8%) !default;
 $shadow-md: 0 4px 12px rgb(2 3 24 / 10%) !default;
 $shadow-lg: 0 12px 32px rgb(2 3 24 / 14%) !default;
@@ -91,14 +92,18 @@ $palette-secondary-dark: #8c1038 !default;
 $palette-accent-light: #00bfc1 !default;
 $palette-accent-medium: #009598 !default;
 $palette-accent-dark: #006c6e !default;
+$palette-indigo: #123397 !default;
 $font-family-sans: 'Open Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
 $font-family-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace !default;
 $font-weight-regular: 400 !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: 700 !default;
-$text-style-h1-mobile-size: 3.5rem !default;
+$text-style-h1-mobile-size: 1.75rem !default;
 $text-style-h1-mobile-line-height: 1.3 !default;
 $text-style-h1-mobile-weight: 700 !default;
+$text-style-h1-desktop-size: 3.5rem !default;
+$text-style-h1-desktop-line-height: 1.3 !default;
+$text-style-h1-desktop-weight: 700 !default;
 $text-style-h2-mobile-size: 2.25rem !default;
 $text-style-h2-mobile-line-height: 1.3 !default;
 $text-style-h2-mobile-weight: 700 !default;
@@ -138,6 +143,24 @@ $text-style-option-semibold-mobile-weight: 600 !default;
 $text-style-caption-mobile-size: 0.75rem !default;
 $text-style-caption-mobile-line-height: 1.3 !default;
 $text-style-caption-mobile-weight: 400 !default;
+$text-style-h2-semibold-mobile-size: 1.5rem !default;
+$text-style-h2-semibold-mobile-line-height: 1.3 !default;
+$text-style-h2-semibold-mobile-weight: 600 !default;
+$text-style-h2-semibold-desktop-size: 2.25rem !default;
+$text-style-h2-semibold-desktop-line-height: 1.3 !default;
+$text-style-h2-semibold-desktop-weight: 600 !default;
+$text-style-article-mobile-size: 0.875rem !default;
+$text-style-article-mobile-line-height: 1.375rem !default;
+$text-style-article-mobile-weight: 400 !default;
+$text-style-article-desktop-size: 1rem !default;
+$text-style-article-desktop-line-height: 1.625rem !default;
+$text-style-article-desktop-weight: 400 !default;
+$text-style-byline-mobile-size: 0.75rem !default;
+$text-style-byline-mobile-line-height: 1.5 !default;
+$text-style-byline-mobile-weight: 400 !default;
+$text-style-byline-desktop-size: 1rem !default;
+$text-style-byline-desktop-line-height: 1.5 !default;
+$text-style-byline-desktop-weight: 400 !default;
 
 $tokens: (
   'color': (
@@ -168,7 +191,8 @@ $tokens: (
     'accent': $color-accent,
     'on-accent': $color-on-accent,
     'disabled-background': $color-disabled-background,
-    'disabled-text': $color-disabled-text
+    'disabled-text': $color-disabled-text,
+    'glow-indigo': $color-glow-indigo
   ),
   'shadow': (
     'sm': $shadow-sm,
@@ -252,7 +276,8 @@ $tokens: (
     'secondary-dark': $palette-secondary-dark,
     'accent-light': $palette-accent-light,
     'accent-medium': $palette-accent-medium,
-    'accent-dark': $palette-accent-dark
+    'accent-dark': $palette-accent-dark,
+    'indigo': $palette-indigo
   ),
   'font-family': (
     'sans': $font-family-sans,
@@ -269,6 +294,11 @@ $tokens: (
         'size': $text-style-h1-mobile-size,
         'line-height': $text-style-h1-mobile-line-height,
         'weight': $text-style-h1-mobile-weight
+      ),
+      'desktop': (
+        'size': $text-style-h1-desktop-size,
+        'line-height': $text-style-h1-desktop-line-height,
+        'weight': $text-style-h1-desktop-weight
       )
     ),
     'h2': (
@@ -360,6 +390,42 @@ $tokens: (
         'size': $text-style-caption-mobile-size,
         'line-height': $text-style-caption-mobile-line-height,
         'weight': $text-style-caption-mobile-weight
+      )
+    ),
+    'h2-semibold': (
+      'mobile': (
+        'size': $text-style-h2-semibold-mobile-size,
+        'line-height': $text-style-h2-semibold-mobile-line-height,
+        'weight': $text-style-h2-semibold-mobile-weight
+      ),
+      'desktop': (
+        'size': $text-style-h2-semibold-desktop-size,
+        'line-height': $text-style-h2-semibold-desktop-line-height,
+        'weight': $text-style-h2-semibold-desktop-weight
+      )
+    ),
+    'article': (
+      'mobile': (
+        'size': $text-style-article-mobile-size,
+        'line-height': $text-style-article-mobile-line-height,
+        'weight': $text-style-article-mobile-weight
+      ),
+      'desktop': (
+        'size': $text-style-article-desktop-size,
+        'line-height': $text-style-article-desktop-line-height,
+        'weight': $text-style-article-desktop-weight
+      )
+    ),
+    'byline': (
+      'mobile': (
+        'size': $text-style-byline-mobile-size,
+        'line-height': $text-style-byline-mobile-line-height,
+        'weight': $text-style-byline-mobile-weight
+      ),
+      'desktop': (
+        'size': $text-style-byline-desktop-size,
+        'line-height': $text-style-byline-desktop-line-height,
+        'weight': $text-style-byline-desktop-weight
       )
     )
   )

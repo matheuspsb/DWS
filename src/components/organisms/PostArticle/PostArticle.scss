@@ -1,0 +1,39 @@
+@use 'styles' as ds;
+
+$image-ratio: 875 / 384;
+
+.post-article {
+  display: flex;
+  flex-direction: column;
+  gap: ds.space(6);
+
+  &__title {
+    margin: 0;
+  }
+
+  &__title + * {
+    margin-top: calc(#{ds.space(3)} - #{ds.space(6)});
+
+    @include ds.up('tablet') {
+      margin-top: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: $image-ratio;
+    border-radius: ds.radius('lg');
+    object-fit: cover;
+  }
+
+  &__body {
+    @include ds.text-style('article');
+    display: flex;
+    flex-direction: column;
+    gap: ds.space(4);
+
+    p {
+      margin: 0;
+    }
+  }
+}

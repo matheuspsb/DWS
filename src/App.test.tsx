@@ -15,9 +15,11 @@ describe('App routing', () => {
     expect(await screen.findAllByRole('article')).toHaveLength(3)
   })
 
-  it('renders the post detail on /posts/:id', () => {
-    renderWithProviders(<App />, '/posts/3')
+  it('renders the post detail on /posts/:id', async () => {
+    renderWithProviders(<App />, '/posts/p1')
 
-    expect(screen.getByRole('heading', { name: 'Post 3' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Tech Innovations in Healthcare' }),
+    ).toBeInTheDocument()
   })
 })

@@ -4,25 +4,10 @@
   color-scheme: light;
 }
 
-$glow-pink-strength: 17%;
-$glow-teal-strength: 10%;
-
 body {
   @include ds.text-style('body-lg');
   color: ds.color('text-default');
   background-color: ds.color('background-page');
-  background-image:
-    radial-gradient(
-      circle 25rem at 100% 20.5rem,
-      color-mix(in srgb, #{ds.color('glow-pink')} $glow-pink-strength, transparent),
-      transparent
-    ),
-    radial-gradient(
-      circle 31rem at 0 calc(100% - 11.5rem),
-      color-mix(in srgb, #{ds.color('glow-teal')} $glow-teal-strength, transparent),
-      transparent
-    );
-  background-repeat: no-repeat;
 }
 
 h1 {

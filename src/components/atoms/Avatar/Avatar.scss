@@ -1,0 +1,17 @@
+@use 'styles' as ds;
+
+$size-mobile: 2.5rem;
+$size-tablet: 4rem;
+
+.avatar {
+  flex: none;
+  width: $size-mobile;
+  height: $size-mobile;
+  border-radius: ds.radius('full');
+  object-fit: cover;
+
+  @include ds.up('tablet') {
+    width: $size-tablet;
+    height: $size-tablet;
+  }
+}

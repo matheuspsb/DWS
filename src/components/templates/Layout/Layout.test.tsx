@@ -1,7 +1,7 @@
 import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { STORAGE_KEY } from '../../../context/recentSearches.ts'
+import { useRecentSearches } from '../../../stores/recentSearches.store.ts'
 import { renderWithProviders } from '../../../test/renderWithProviders.tsx'
 import Layout from './Layout.tsx'
 
@@ -24,8 +24,8 @@ const openSheet = async () => {
   return screen.getByRole('dialog', { name: 'Search' })
 }
 
-afterEach(() => {
-  localStorage.clear()
+beforeEach(() => {
+  useRecentSearches.setState({ searches: [] })
 })
 
 describe('Layout search', () => {
@@ -57,15 +57,15 @@ describe('Layout search', () => {
     await userEvent.type(within(sheet).getByRole('searchbox'), 'sleep')
 
     await waitFor(() => expect(screen.getByTestId('location')).toHaveTextContent('/?q=sleep'))
-    expect(localStorage.getItem(STORAGE_KEY)).toBeNull()
+    expect(useRecentSearches.getState().searches).toEqual([])
 
     await userEvent.click(within(sheet).getByRole('button', { name: 'Close search' }))
 
-    expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!)).toEqual(['sleep'])
+    expect(useRecentSearches.getState().searches).toEqual(['sleep'])
   })
 
   it('searches again when a recent search is picked', async () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(['lisbon']))
+    useRecentSearches.setState({ searches: ['lisbon'] })
     renderLayout()
     const sheet = await openSheet()
 

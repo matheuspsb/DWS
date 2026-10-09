@@ -1,0 +1,12 @@
+@use 'styles' as ds;
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ds.space(4);
+
+  p {
+    margin: 0;
+  }
+}

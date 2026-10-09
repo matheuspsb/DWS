@@ -83,6 +83,9 @@
     },
     "disabled-text": {
       "$value": "{palette.neutral-medium}"
+    },
+    "glow-indigo": {
+      "$value": "{palette.indigo}"
     }
   }
 }

@@ -1,0 +1,18 @@
+@use 'styles' as ds;
+
+.latest-articles {
+  display: flex;
+  flex-direction: column;
+  gap: ds.space(6);
+  padding-top: ds.space(6);
+  border-top: 1px solid ds.color('border-default');
+
+  @include ds.up('tablet') {
+    padding-top: ds.space(12);
+  }
+
+  &__title {
+    @include ds.text-style('h2-semibold');
+    margin: 0;
+  }
+}

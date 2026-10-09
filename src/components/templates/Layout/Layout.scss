@@ -1,9 +1,78 @@
+@use 'sass:list';
+@use 'sass:map';
 @use 'styles' as ds;
 
+@mixin glows($pink, $teal, $indigo: null) {
+  $layers: (
+    radial-gradient(
+      circle 25rem at map.get($pink, 'position'),
+      color-mix(in srgb, #{ds.color('glow-pink')} map.get($pink, 'strength'), transparent),
+      transparent
+    ),
+    radial-gradient(
+      circle 31rem at map.get($teal, 'position'),
+      color-mix(in srgb, #{ds.color('glow-teal')} map.get($teal, 'strength'), transparent),
+      transparent
+    )
+  );
+
+  @if $indigo {
+    $layers: list.append(
+      $layers,
+      radial-gradient(
+        circle 32rem at map.get($indigo, 'position'),
+        color-mix(in srgb, #{ds.color('glow-indigo')} map.get($indigo, 'strength'), transparent),
+        transparent
+      ),
+      comma
+    );
+  }
+
+  background-image: $layers;
+}
+
 .layout {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  isolation: isolate;
+
+  &::before {
+    @include glows(
+      (
+        'position': 100% 20.5rem,
+        'strength': 17%,
+      ),
+      (
+        'position': 0 calc(100% - 11.5rem),
+        'strength': 10%,
+      )
+    );
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+
+  &--detail::before {
+    @include glows(
+      (
+        'position': calc(100% - 21rem) 28rem,
+        'strength': 30%,
+      ),
+      (
+        'position': 0 calc(100% - 65rem),
+        'strength': 20%,
+      ),
+      (
+        'position': calc(100% - 14rem) calc(100% - 19rem),
+        'strength': 30%,
+      )
+    );
+  }
 
   &__header {
     border-bottom: 1px solid ds.color('border-default');
