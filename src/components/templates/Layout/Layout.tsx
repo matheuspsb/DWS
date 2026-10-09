@@ -1,5 +1,6 @@
 import { Link, Outlet, useMatch } from 'react-router-dom'
 import { usePostFilters } from '../../../hooks/usePostFilters.ts'
+import { useScrollToTop } from '../../../hooks/useScrollToTop.ts'
 import { useRecentSearches } from '../../../stores/recentSearches.store.ts'
 import Logo from '../../atoms/Logo/Logo.tsx'
 import SearchBar from '../../organisms/SearchBar/SearchBar.tsx'
@@ -11,6 +12,8 @@ export default function Layout() {
   const { searches, addSearch } = useRecentSearches()
 
   const isDetail = useMatch('/posts/:id') !== null
+
+  useScrollToTop()
 
   return (
     <div className={classNames('layout', isDetail && 'layout--detail')}>

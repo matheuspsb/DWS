@@ -32,16 +32,9 @@ $color-on-accent: #e0e2e6 !default;
 $color-disabled-background: #e0e2e6 !default;
 $color-disabled-text: #9ea0a5 !default;
 $color-glow-indigo: #123397 !default;
-$shadow-sm: 0 1px 2px rgb(2 3 24 / 8%) !default;
-$shadow-md: 0 4px 12px rgb(2 3 24 / 10%) !default;
 $shadow-lg: 0 12px 32px rgb(2 3 24 / 14%) !default;
 $duration-fast: 120ms !default;
-$duration-base: 200ms !default;
-$duration-slow: 320ms !default;
 $easing-standard: cubic-bezier(0.2, 0, 0, 1) !default;
-$easing-enter: cubic-bezier(0, 0, 0, 1) !default;
-$easing-exit: cubic-bezier(0.3, 0, 1, 1) !default;
-$space-0: 0rem !default;
 $space-1: 0.25rem !default;
 $space-2: 0.5rem !default;
 $space-3: 0.75rem !default;
@@ -49,36 +42,25 @@ $space-4: 1rem !default;
 $space-5: 1.25rem !default;
 $space-6: 1.5rem !default;
 $space-8: 2rem !default;
-$space-10: 2.5rem !default;
 $space-12: 3rem !default;
 $space-16: 4rem !default;
 $space-20: 5rem !default;
-$space-24: 6rem !default;
-$radius-none: 0rem !default;
 $radius-sm: 0.25rem !default;
 $radius-md: 0.5rem !default;
 $radius-lg: 1rem !default;
 $radius-full: 9999px !default;
 $breakpoint-tablet: 48rem !default;
 $breakpoint-desktop: 64rem !default;
-$breakpoint-wide: 80rem !default;
 $container-max-width: 90rem !default;
-$z-index-base: 0 !default;
-$z-index-dropdown: 100 !default;
-$z-index-sticky: 200 !default;
-$z-index-overlay: 300 !default;
-$z-index-modal: 400 !default;
-$z-index-toast: 500 !default;
 $grid-mobile-columns: 4 !default;
 $grid-mobile-margin: 1rem !default;
 $grid-mobile-gutter: 1rem !default;
 $grid-desktop-columns: 12 !default;
 $grid-desktop-margin: 3.5rem !default;
 $grid-desktop-gutter: 1.5rem !default;
-$palette-white: #ffffff !default;
+$z-index-dropdown: 100 !default;
 $palette-neutral-lightest: #f0f0f2 !default;
 $palette-neutral-extra-light: #e0e2e6 !default;
-$palette-neutral-light: #c0c2c8 !default;
 $palette-neutral-medium: #9ea0a5 !default;
 $palette-neutral-dark: #7f8185 !default;
 $palette-neutral-extra-dark: #5e5f63 !default;
@@ -94,7 +76,6 @@ $palette-accent-medium: #009598 !default;
 $palette-accent-dark: #006c6e !default;
 $palette-indigo: #123397 !default;
 $font-family-sans: 'Open Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
-$font-family-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace !default;
 $font-weight-regular: 400 !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: 700 !default;
@@ -195,22 +176,15 @@ $tokens: (
     'glow-indigo': $color-glow-indigo
   ),
   'shadow': (
-    'sm': $shadow-sm,
-    'md': $shadow-md,
     'lg': $shadow-lg
   ),
   'duration': (
-    'fast': $duration-fast,
-    'base': $duration-base,
-    'slow': $duration-slow
+    'fast': $duration-fast
   ),
   'easing': (
-    'standard': $easing-standard,
-    'enter': $easing-enter,
-    'exit': $easing-exit
+    'standard': $easing-standard
   ),
   'space': (
-    '0': $space-0,
     '1': $space-1,
     '2': $space-2,
     '3': $space-3,
@@ -218,14 +192,11 @@ $tokens: (
     '5': $space-5,
     '6': $space-6,
     '8': $space-8,
-    '10': $space-10,
     '12': $space-12,
     '16': $space-16,
-    '20': $space-20,
-    '24': $space-24
+    '20': $space-20
   ),
   'radius': (
-    'none': $radius-none,
     'sm': $radius-sm,
     'md': $radius-md,
     'lg': $radius-lg,
@@ -233,19 +204,10 @@ $tokens: (
   ),
   'breakpoint': (
     'tablet': $breakpoint-tablet,
-    'desktop': $breakpoint-desktop,
-    'wide': $breakpoint-wide
+    'desktop': $breakpoint-desktop
   ),
   'container': (
     'max-width': $container-max-width
-  ),
-  'z-index': (
-    'base': $z-index-base,
-    'dropdown': $z-index-dropdown,
-    'sticky': $z-index-sticky,
-    'overlay': $z-index-overlay,
-    'modal': $z-index-modal,
-    'toast': $z-index-toast
   ),
   'grid': (
     'mobile': (
@@ -259,11 +221,12 @@ $tokens: (
       'gutter': $grid-desktop-gutter
     )
   ),
+  'z-index': (
+    'dropdown': $z-index-dropdown
+  ),
   'palette': (
-    'white': $palette-white,
     'neutral-lightest': $palette-neutral-lightest,
     'neutral-extra-light': $palette-neutral-extra-light,
-    'neutral-light': $palette-neutral-light,
     'neutral-medium': $palette-neutral-medium,
     'neutral-dark': $palette-neutral-dark,
     'neutral-extra-dark': $palette-neutral-extra-dark,
@@ -280,8 +243,7 @@ $tokens: (
     'indigo': $palette-indigo
   ),
   'font-family': (
-    'sans': $font-family-sans,
-    'mono': $font-family-mono
+    'sans': $font-family-sans
   ),
   'font-weight': (
     'regular': $font-weight-regular,

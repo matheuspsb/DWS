@@ -1,16 +1,10 @@
 {
   "palette": {
-    "white": {
-      "$value": "#ffffff"
-    },
     "neutral-lightest": {
       "$value": "#f0f0f2"
     },
     "neutral-extra-light": {
       "$value": "#e0e2e6"
-    },
-    "neutral-light": {
-      "$value": "#c0c2c8"
     },
     "neutral-medium": {
       "$value": "#9ea0a5"

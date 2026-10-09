@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom/vitest'
 
+window.scrollTo = () => {}
+
 if (!HTMLDialogElement.prototype.showModal) {
   HTMLDialogElement.prototype.showModal = function () {
     this.setAttribute('open', '')

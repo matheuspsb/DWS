@@ -34,11 +34,11 @@
   @return var(--font-family-#{-check('font-family', $name)});
 }
 
-@function duration($name: 'base') {
+@function duration($name) {
   @return var(--duration-#{-check('duration', $name)});
 }
 
-@function easing($name: 'standard') {
+@function easing($name) {
   @return var(--easing-#{-check('easing', $name)});
 }
 

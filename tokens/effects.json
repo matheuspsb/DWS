@@ -1,17 +1,17 @@
 {
   "shadow": {
-    "sm": { "$value": "0 1px 2px rgb(2 3 24 / 8%)" },
-    "md": { "$value": "0 4px 12px rgb(2 3 24 / 10%)" },
-    "lg": { "$value": "0 12px 32px rgb(2 3 24 / 14%)" }
+    "lg": {
+      "$value": "0 12px 32px rgb(2 3 24 / 14%)"
+    }
   },
   "duration": {
-    "fast": { "$value": "120ms" },
-    "base": { "$value": "200ms" },
-    "slow": { "$value": "320ms" }
+    "fast": {
+      "$value": "120ms"
+    }
   },
   "easing": {
-    "standard": { "$value": "cubic-bezier(0.2, 0, 0, 1)" },
-    "enter": { "$value": "cubic-bezier(0, 0, 0, 1)" },
-    "exit": { "$value": "cubic-bezier(0.3, 0, 1, 1)" }
+    "standard": {
+      "$value": "cubic-bezier(0.2, 0, 0, 1)"
+    }
   }
 }

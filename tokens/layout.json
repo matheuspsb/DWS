@@ -1,8 +1,5 @@
 {
   "space": {
-    "0": {
-      "$value": "0rem"
-    },
     "1": {
       "$value": "0.25rem"
     },
@@ -24,9 +21,6 @@
     "8": {
       "$value": "2rem"
     },
-    "10": {
-      "$value": "2.5rem"
-    },
     "12": {
       "$value": "3rem"
     },
@@ -35,15 +29,9 @@
     },
     "20": {
       "$value": "5rem"
-    },
-    "24": {
-      "$value": "6rem"
     }
   },
   "radius": {
-    "none": {
-      "$value": "0rem"
-    },
     "sm": {
       "$value": "0.25rem"
     },
@@ -63,34 +51,11 @@
     },
     "desktop": {
       "$value": "64rem"
-    },
-    "wide": {
-      "$value": "80rem"
     }
   },
   "container": {
     "max-width": {
       "$value": "90rem"
-    }
-  },
-  "z-index": {
-    "base": {
-      "$value": 0
-    },
-    "dropdown": {
-      "$value": 100
-    },
-    "sticky": {
-      "$value": 200
-    },
-    "overlay": {
-      "$value": 300
-    },
-    "modal": {
-      "$value": 400
-    },
-    "toast": {
-      "$value": 500
     }
   },
   "grid": {
@@ -115,6 +80,11 @@
       "gutter": {
         "$value": "1.5rem"
       }
+    }
+  },
+  "z-index": {
+    "dropdown": {
+      "$value": 100
     }
   }
 }
