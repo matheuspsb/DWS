@@ -50,7 +50,7 @@ $title-to-body: 2.125rem;
     display: none;
 
     @include ds.up('desktop') {
-      @include ds.text-style('body-sm-bold');
+      @include ds.text-style('body-lg-semibold');
       display: inline;
       margin-right: calc(#{$sort-label-clearance} - #{ds.space(2)});
       color: ds.color('text-muted');

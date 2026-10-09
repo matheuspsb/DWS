@@ -16,13 +16,18 @@
     background-color ds.duration('fast') ds.easing('standard'),
     color ds.duration('fast') ds.easing('standard');
 
+  @include ds.up('desktop') {
+    @include ds.text-style('body-lg');
+    height: 2.25rem;
+  }
+
   &__label {
     @include ds.up('desktop') {
       display: inline-flex;
       flex-direction: column;
 
       &::after {
-        @include ds.text-style('body-sm-bold');
+        @include ds.text-style('body-lg-semibold');
         content: attr(data-label);
         height: 0;
         overflow: hidden;
@@ -40,6 +45,10 @@
     @include ds.text-style('body-sm-bold');
     background-color: ds.color('accent');
     color: ds.color('on-accent');
+
+    @include ds.up('desktop') {
+      @include ds.text-style('body-lg-semibold');
+    }
 
     > svg {
       color: ds.color('on-accent');
