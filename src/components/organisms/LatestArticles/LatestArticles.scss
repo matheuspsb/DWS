@@ -15,4 +15,18 @@
     @include ds.text-style('h2-semibold');
     margin: 0;
   }
+
+  &__title-desktop {
+    display: none;
+
+    @include ds.up('tablet') {
+      display: inline;
+    }
+  }
+
+  &__title-mobile {
+    @include ds.up('tablet') {
+      display: none;
+    }
+  }
 }

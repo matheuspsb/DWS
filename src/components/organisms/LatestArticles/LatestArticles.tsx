@@ -12,7 +12,10 @@ export default function LatestArticles({ posts }: LatestArticlesProps) {
   return (
     <section className="latest-articles" aria-labelledby="latest-articles-title">
       <h2 id="latest-articles-title" className="latest-articles__title">
-        Latest articles
+        <span className="latest-articles__title-mobile" aria-hidden="true">
+          Last articles
+        </span>
+        <span className="latest-articles__title-desktop">Latest articles</span>
       </h2>
       <PostGrid posts={posts} />
     </section>
