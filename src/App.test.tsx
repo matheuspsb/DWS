@@ -8,6 +8,12 @@ vi.mock('./services/api.ts', () => ({ api: vi.fn() }))
 beforeEach(() => mockApi())
 
 describe('App routing', () => {
+  it('renders a not found page for an unknown route', () => {
+    renderWithProviders(<App />, '/nowhere')
+
+    expect(screen.getByRole('heading', { name: 'Page not found' })).toBeInTheDocument()
+  })
+
   it('renders the post list on the home route', async () => {
     renderWithProviders(<App />, '/')
 
