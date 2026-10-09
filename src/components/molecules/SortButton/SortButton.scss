@@ -41,17 +41,18 @@
     transition: color ds.duration('fast') ds.easing('standard');
   }
 
-  &:hover {
-    @include ds.text-style('body-sm-bold');
-    background-color: ds.color('accent');
-    color: ds.color('on-accent');
-
-    @include ds.up('desktop') {
-      @include ds.text-style('body-lg-semibold');
-    }
-
-    > svg {
+  @media (hover: hover) {
+    &:hover {
+      background-color: ds.color('accent');
       color: ds.color('on-accent');
+
+      @include ds.up('desktop') {
+        @include ds.text-style('body-lg-semibold');
+      }
+
+      > svg {
+        color: ds.color('on-accent');
+      }
     }
   }
 }
