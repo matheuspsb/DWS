@@ -169,6 +169,36 @@ describe('useSearchBar', () => {
     })
   })
 
+  describe('reporting submitted searches', () => {
+    it('reports what was submitted, without the spaces around it', () => {
+      const onSubmit = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSubmit }))
+
+      act(() => result.current.submit('  react '))
+
+      expect(onSubmit).toHaveBeenCalledWith('react')
+    })
+
+    it('reports a picked suggestion', () => {
+      const onSubmit = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSubmit }))
+
+      act(() => result.current.searchFor('Design'))
+
+      expect(onSubmit).toHaveBeenCalledWith('Design')
+    })
+
+    it('does not report what was only typed', () => {
+      const onSubmit = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSubmit }))
+
+      act(() => result.current.updateQuery('react'))
+      act(() => vi.advanceTimersByTime(1000))
+
+      expect(onSubmit).not.toHaveBeenCalled()
+    })
+  })
+
   describe('clearing', () => {
     it('empties the field and searches for the empty text', () => {
       const onSearch = vi.fn()

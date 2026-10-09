@@ -10,6 +10,8 @@ interface SearchBarProps {
   defaultValue?: string
   onChange?: (value: string) => void
   onSearch?: (query: string) => void
+  onSubmit?: (query: string) => void
+  onClearSuggestions?: () => void
   suggestions?: string[]
   debounceMs?: number
 }
@@ -19,6 +21,8 @@ export default function SearchBar({
   defaultValue,
   onChange,
   onSearch,
+  onSubmit,
+  onClearSuggestions,
   suggestions = [],
   debounceMs,
 }: SearchBarProps) {
@@ -27,6 +31,7 @@ export default function SearchBar({
     defaultValue,
     onChange,
     onSearch,
+    onSubmit,
     debounceMs,
   })
   const sheet = useModalDialog({ initialFocus: 'input' })
@@ -82,7 +87,7 @@ export default function SearchBar({
               }
             />
           </div>
-          <ul className="search-bar__suggestions">
+          <ul className="search-bar__suggestions" aria-label="Recent searches">
             {suggestions.map((suggestion, index) => (
               <li key={`${suggestion}-${index}`}>
                 <button
@@ -95,6 +100,15 @@ export default function SearchBar({
               </li>
             ))}
           </ul>
+          {onClearSuggestions && suggestions.length > 0 && (
+            <button
+              type="button"
+              className="search-bar__clear-history"
+              onClick={onClearSuggestions}
+            >
+              Clear recent searches
+            </button>
+          )}
         </dialog>
       )}
     </div>

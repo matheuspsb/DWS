@@ -1,11 +1,13 @@
 import { Link, Outlet } from 'react-router-dom'
 import { usePostFilters } from '../../../hooks/usePostFilters.ts'
+import { useRecentSearches } from '../../../hooks/useRecentSearches.ts'
 import Logo from '../../atoms/Logo/Logo.tsx'
 import SearchBar from '../../organisms/SearchBar/SearchBar.tsx'
 import './Layout.scss'
 
 export default function Layout() {
   const { filters, updateFilters } = usePostFilters()
+  const { searches, addSearch, clearSearches } = useRecentSearches()
 
   return (
     <div className="layout">
@@ -18,6 +20,9 @@ export default function Layout() {
             <SearchBar
               defaultValue={filters.search}
               onSearch={(search) => updateFilters({ search })}
+              onSubmit={addSearch}
+              onClearSuggestions={clearSearches}
+              suggestions={searches}
             />
           </div>
         </div>

@@ -7,6 +7,7 @@ interface UseSearchBarOptions {
   defaultValue?: string
   onChange?: (value: string) => void
   onSearch?: (query: string) => void
+  onSubmit?: (query: string) => void
   debounceMs?: number
 }
 
@@ -15,6 +16,7 @@ export function useSearchBar({
   defaultValue = '',
   onChange,
   onSearch,
+  onSubmit,
   debounceMs = 300,
 }: UseSearchBarOptions) {
   const [query, setQuery] = useControllableState({ value, defaultValue, onChange })
@@ -42,6 +44,7 @@ export function useSearchBar({
   const submit = (text: string) => {
     cancelSearch()
     search(text)
+    onSubmit?.(lastSearch.current)
   }
 
   const searchFor = (text: string) => {
