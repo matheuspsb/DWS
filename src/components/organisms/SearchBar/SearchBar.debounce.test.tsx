@@ -182,6 +182,7 @@ describe('SearchBar debounce', () => {
       await user.type(within(dialog).getByRole('searchbox'), 'react')
       wait(300)
 
+      expect(onSearch).toHaveBeenCalledTimes(1)
       expect(onSearch).toHaveBeenCalledWith('react')
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
@@ -198,7 +199,7 @@ describe('SearchBar debounce', () => {
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
 
-    it('searches for the empty text right away when the field is cleared', async () => {
+    it('shows everything again right away when the field is cleared', async () => {
       const onSearch = vi.fn()
       const user = setup()
       render(<SearchBar defaultValue="react" onSearch={onSearch} />)

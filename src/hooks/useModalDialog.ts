@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, type MouseEvent } from 'react'
 
 interface UseModalDialogOptions {
   initialFocus?: string
+  onClose?: () => void
 }
 
-export function useModalDialog({ initialFocus }: UseModalDialogOptions = {}) {
+export function useModalDialog({ initialFocus, onClose }: UseModalDialogOptions = {}) {
   const [isOpen, setIsOpen] = useState(false)
   const dialogRef = useRef<HTMLDialogElement | null>(null)
 
@@ -18,5 +19,19 @@ export function useModalDialog({ initialFocus }: UseModalDialogOptions = {}) {
     if (initialFocus) dialog.querySelector<HTMLElement>(initialFocus)?.focus()
   }
 
-  return { isOpen, open, close, dialogProps: { ref: attach, onClose: () => setIsOpen(false) } }
+  const handleClose = () => {
+    setIsOpen(false)
+    onClose?.()
+  }
+
+  const closeOnBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
+    if (event.target === event.currentTarget) close()
+  }
+
+  return {
+    isOpen,
+    open,
+    close,
+    dialogProps: { ref: attach, onClose: handleClose, onClick: closeOnBackdropClick },
+  }
 }

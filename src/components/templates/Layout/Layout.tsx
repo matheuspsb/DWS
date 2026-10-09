@@ -7,7 +7,7 @@ import './Layout.scss'
 
 export default function Layout() {
   const { filters, updateFilters } = usePostFilters()
-  const { searches, addSearch, clearSearches } = useRecentSearches()
+  const { searches, addSearch } = useRecentSearches()
 
   return (
     <div className="layout">
@@ -19,9 +19,8 @@ export default function Layout() {
           <div className="layout__search">
             <SearchBar
               defaultValue={filters.search}
-              onSearch={(search) => updateFilters({ search })}
+              onSearch={(search) => updateFilters({ search }, { replace: true })}
               onSubmit={addSearch}
-              onClearSuggestions={clearSearches}
               suggestions={searches}
             />
           </div>

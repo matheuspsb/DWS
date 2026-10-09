@@ -33,10 +33,6 @@ describe('recentSearchesReducer', () => {
     expect(next[0]).toBe('new')
     expect(next).not.toContain(`old ${MAX_RECENT_SEARCHES - 1}`)
   })
-
-  it('clears everything', () => {
-    expect(recentSearchesReducer(['a', 'b'], { type: 'cleared' })).toEqual([])
-  })
 })
 
 describe('storage', () => {

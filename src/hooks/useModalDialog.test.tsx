@@ -2,8 +2,8 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useModalDialog } from './useModalDialog.ts'
 
-function Harness({ initialFocus }: { initialFocus?: string }) {
-  const modal = useModalDialog({ initialFocus })
+function Harness({ initialFocus, onClose }: { initialFocus?: string; onClose?: () => void }) {
+  const modal = useModalDialog({ initialFocus, onClose })
   return (
     <>
       <button onClick={modal.open}>Open</button>
@@ -66,6 +66,27 @@ describe('useModalDialog', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Close from outside' }))
 
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('tells when it closes, however it was closed', async () => {
+    const onClose = vi.fn()
+    render(<Harness onClose={onClose} />)
+    await userEvent.click(screen.getByRole('button', { name: 'Open' }))
+
+    fireEvent(screen.getByRole('dialog'), new Event('close'))
+
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  it('closes when the backdrop is clicked, but not when the content is', async () => {
+    render(<Harness />)
+    await userEvent.click(screen.getByRole('button', { name: 'Open' }))
+
+    await userEvent.click(screen.getByRole('textbox', { name: 'Name' }))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('dialog'))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 

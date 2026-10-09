@@ -21,8 +21,10 @@ export function useSearchBar({
 }: UseSearchBarOptions) {
   const [query, setQuery] = useControllableState({ value, defaultValue, onChange })
   const lastSearch = useRef(query.trim())
+  const typed = useRef(query)
 
   const search = (text: string) => {
+    typed.current = text
     lastSearch.current = text.trim()
     onSearch?.(lastSearch.current)
   }
@@ -53,16 +55,23 @@ export function useSearchBar({
   }
 
   const updateQuery = (text: string) => {
+    typed.current = text
     setQuery(text)
     if (text.trim() === '') searchNow(text)
     else searchLater(text)
   }
 
   const clear = (event: MouseEvent<HTMLButtonElement>) => {
+    typed.current = ''
     setQuery('')
     searchNow('')
     event.currentTarget.form?.querySelector('input')?.focus()
   }
 
-  return { query, updateQuery, submit, searchFor, clear }
+  const commit = () => {
+    searchNow(typed.current)
+    onSubmit?.(lastSearch.current)
+  }
+
+  return { query, updateQuery, submit, searchFor, clear, commit }
 }

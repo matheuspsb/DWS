@@ -1,7 +1,7 @@
 export const MAX_RECENT_SEARCHES = 8
 export const STORAGE_KEY = 'dws.recent-searches'
 
-export type RecentSearchesAction = { type: 'added'; query: string } | { type: 'cleared' }
+export type RecentSearchesAction = { type: 'added'; query: string }
 
 export function recentSearchesReducer(state: string[], action: RecentSearchesAction): string[] {
   switch (action.type) {
@@ -11,8 +11,6 @@ export function recentSearchesReducer(state: string[], action: RecentSearchesAct
       const others = state.filter((entry) => entry.toLowerCase() !== query.toLowerCase())
       return [query, ...others].slice(0, MAX_RECENT_SEARCHES)
     }
-    case 'cleared':
-      return []
   }
 }
 

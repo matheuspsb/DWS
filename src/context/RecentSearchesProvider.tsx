@@ -20,7 +20,6 @@ export default function RecentSearchesProvider({ children }: { children: ReactNo
       value={{
         searches,
         addSearch: (query) => update({ type: 'added', query }),
-        clearSearches: () => update({ type: 'cleared' }),
       }}
     >
       {children}

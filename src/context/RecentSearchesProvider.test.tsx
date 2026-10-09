@@ -5,7 +5,7 @@ import RecentSearchesProvider from './RecentSearchesProvider.tsx'
 import { STORAGE_KEY } from './recentSearches.ts'
 
 function Demo() {
-  const { searches, addSearch, clearSearches } = useRecentSearches()
+  const { searches, addSearch } = useRecentSearches()
   return (
     <>
       <ul aria-label="Searches">
@@ -14,7 +14,6 @@ function Demo() {
         ))}
       </ul>
       <button onClick={() => addSearch('sleep')}>Add</button>
-      <button onClick={clearSearches}>Clear</button>
     </>
   )
 }
@@ -46,16 +45,6 @@ describe('RecentSearchesProvider', () => {
     renderDemo()
 
     expect(screen.getByRole('listitem')).toHaveTextContent('lisbon')
-  })
-
-  it('clears the list and the saved copy', async () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(['lisbon']))
-    renderDemo()
-
-    await userEvent.click(screen.getByRole('button', { name: 'Clear' }))
-
-    expect(screen.queryByRole('listitem')).not.toBeInTheDocument()
-    expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!)).toEqual([])
   })
 
   it('refuses to be used without the provider', () => {

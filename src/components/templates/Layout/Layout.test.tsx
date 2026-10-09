@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { STORAGE_KEY } from '../../../context/recentSearches.ts'
@@ -50,13 +50,18 @@ describe('Layout search', () => {
     expect(items).toEqual(['sleep lisbon', 'sleep'])
   })
 
-  it('does not remember what was only typed', async () => {
+  it('searches while typing in the mobile search and remembers it when it closes', async () => {
     renderLayout()
-    await userEvent.type(screen.getAllByRole('searchbox')[0], 'sleep')
-
     const sheet = await openSheet()
 
-    expect(within(sheet).queryByRole('button', { name: 'sleep' })).not.toBeInTheDocument()
+    await userEvent.type(within(sheet).getByRole('searchbox'), 'sleep')
+
+    await waitFor(() => expect(screen.getByTestId('location')).toHaveTextContent('/?q=sleep'))
+    expect(localStorage.getItem(STORAGE_KEY)).toBeNull()
+
+    await userEvent.click(within(sheet).getByRole('button', { name: 'Close search' }))
+
+    expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!)).toEqual(['sleep'])
   })
 
   it('searches again when a recent search is picked', async () => {
@@ -68,16 +73,5 @@ describe('Layout search', () => {
 
     expect(screen.getByTestId('location')).toHaveTextContent('/?q=lisbon')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-  })
-
-  it('clears the history', async () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(['lisbon']))
-    renderLayout()
-    const sheet = await openSheet()
-
-    await userEvent.click(within(sheet).getByRole('button', { name: 'Clear recent searches' }))
-
-    expect(within(sheet).queryByRole('button', { name: 'lisbon' })).not.toBeInTheDocument()
-    expect(within(sheet).queryByRole('button', { name: 'Clear recent searches' })).toBeNull()
   })
 })

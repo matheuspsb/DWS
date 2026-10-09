@@ -6,9 +6,9 @@ export function usePostFilters() {
   const navigate = useNavigate()
   const filters = parseFilters(params)
 
-  const updateFilters = (patch: Partial<PostFilters>) => {
+  const updateFilters = (patch: Partial<PostFilters>, { replace = false } = {}) => {
     const search = serializeFilters({ ...filters, ...patch }).toString()
-    navigate({ pathname: '/', search })
+    navigate({ pathname: '/', search }, { replace })
   }
 
   return { filters, updateFilters }

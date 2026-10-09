@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
 import SearchBar from './SearchBar.tsx'
@@ -118,6 +118,18 @@ describe('SearchBar', () => {
         const reopened = await openSheet()
 
         expect(within(reopened).getByRole('searchbox')).toHaveValue('react')
+      })
+
+      it('reports the search when it closes, so it can be remembered', async () => {
+        const onSubmit = vi.fn()
+        render(<SearchBar onSubmit={onSubmit} />)
+        const dialog = await openSheet()
+        await userEvent.type(within(dialog).getByRole('searchbox'), 'react')
+        await waitFor(() => expect(onSubmit).not.toHaveBeenCalled())
+
+        await userEvent.click(within(dialog).getByRole('button', { name: 'Close search' }))
+
+        expect(onSubmit).toHaveBeenCalledWith('react')
       })
     })
 

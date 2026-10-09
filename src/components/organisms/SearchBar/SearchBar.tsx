@@ -11,7 +11,6 @@ interface SearchBarProps {
   onChange?: (value: string) => void
   onSearch?: (query: string) => void
   onSubmit?: (query: string) => void
-  onClearSuggestions?: () => void
   suggestions?: string[]
   debounceMs?: number
 }
@@ -22,11 +21,10 @@ export default function SearchBar({
   onChange,
   onSearch,
   onSubmit,
-  onClearSuggestions,
   suggestions = [],
   debounceMs,
 }: SearchBarProps) {
-  const { query, updateQuery, submit, searchFor, clear } = useSearchBar({
+  const { query, updateQuery, submit, searchFor, clear, commit } = useSearchBar({
     value,
     defaultValue,
     onChange,
@@ -34,7 +32,7 @@ export default function SearchBar({
     onSubmit,
     debounceMs,
   })
-  const sheet = useModalDialog({ initialFocus: 'input' })
+  const sheet = useModalDialog({ initialFocus: 'input', onClose: commit })
 
   const submitAndClose = (text: string) => {
     submit(text)
@@ -100,15 +98,6 @@ export default function SearchBar({
               </li>
             ))}
           </ul>
-          {onClearSuggestions && suggestions.length > 0 && (
-            <button
-              type="button"
-              className="search-bar__clear-history"
-              onClick={onClearSuggestions}
-            >
-              Clear recent searches
-            </button>
-          )}
         </dialog>
       )}
     </div>

@@ -199,6 +199,44 @@ describe('useSearchBar', () => {
     })
   })
 
+  describe('committing', () => {
+    it('reports the last searched text, like when the user leaves the search', () => {
+      const onSubmit = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSubmit }))
+      act(() => result.current.updateQuery(' sleep '))
+      act(() => vi.advanceTimersByTime(300))
+
+      act(() => result.current.commit())
+
+      expect(onSubmit).toHaveBeenCalledWith('sleep')
+    })
+
+    it('searches what is still waiting for the pause before reporting it', () => {
+      const onSearch = vi.fn()
+      const onSubmit = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSearch, onSubmit }))
+      act(() => result.current.updateQuery('sleep'))
+
+      act(() => result.current.commit())
+      act(() => vi.advanceTimersByTime(1000))
+
+      expect(onSearch).toHaveBeenCalledTimes(1)
+      expect(onSearch).toHaveBeenCalledWith('sleep')
+      expect(onSubmit).toHaveBeenCalledWith('sleep')
+    })
+
+    it('does not undo a picked suggestion', () => {
+      const onSearch = vi.fn()
+      const { result } = renderHook(() => useSearchBar({ onSearch }))
+      act(() => result.current.updateQuery('sl'))
+
+      act(() => result.current.searchFor('Sleep'))
+      act(() => result.current.commit())
+
+      expect(onSearch).toHaveBeenLastCalledWith('Sleep')
+    })
+  })
+
   describe('clearing', () => {
     it('empties the field and searches for the empty text', () => {
       const onSearch = vi.fn()
