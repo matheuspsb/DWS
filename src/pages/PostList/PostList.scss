@@ -61,6 +61,19 @@ $sort-label-clearance: 2px;
     }
   }
 
+  &__results {
+    @include ds.up('desktop') {
+      grid-column: 4 / span 9;
+    }
+  }
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: ds.space(4);
+  }
+
   &__grid {
     @include ds.grid;
     margin: 0;
@@ -68,7 +81,6 @@ $sort-label-clearance: 2px;
     list-style: none;
 
     @include ds.up('desktop') {
-      grid-column: 4 / span 9;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }

@@ -43,9 +43,9 @@ tokens/         Design tokens (JSON source of truth)
 sd.config.mjs   Style Dictionary configuration
 scripts/        setup.mjs: checks Node, installs dependencies when missing and generates tokens (run by the pre* npm hooks)
 src/
-  api/          API client and endpoint functions
+  services/     REST client and one *.service.ts per resource (posts, authors, categories)
   components/   Atomic Design: atoms, molecules, organisms and templates
-  hooks/        Reusable hooks
+  hooks/        Reusable hooks (TanStack Query hooks, URL filters)
   pages/        Route-level views (PostList, PostDetail)
   styles/       Design system (tokens, functions/mixins, base styles)
   test/         Test setup and helpers
@@ -54,4 +54,4 @@ src/
 
 ## API
 
-Data comes from `https://tech-test-backend.dwsbrazil.io` (`/posts`, `/authors`, `/categories`).
+Data comes from `https://tech-test-backend.dwsbrazil.io` (`/posts`, `/authors`, `/categories`). The address lives in `.env` (`VITE_API_URL`), which is committed because it is public and keeps `npm start` working on a fresh clone. Requests go through `src/services` and are cached by TanStack Query. The filters, search and sort order live in the URL (`/?category=...&author=...&q=...&sort=oldest`), so a filtered list can be shared.

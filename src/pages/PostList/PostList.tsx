@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from '../../components/atoms/Button/Button.tsx'
 import SortButton from '../../components/molecules/SortButton/SortButton.tsx'
 import FilterDropdown from '../../components/organisms/FilterDropdown/FilterDropdown.tsx'
 import FilterPanel, {
@@ -6,39 +7,34 @@ import FilterPanel, {
   type FilterSelection,
 } from '../../components/organisms/FilterPanel/FilterPanel.tsx'
 import PostCard from '../../components/organisms/PostCard/PostCard.tsx'
+import { useAuthors } from '../../hooks/useAuthors.ts'
+import { useCategories } from '../../hooks/useCategories.ts'
+import { usePostFilters } from '../../hooks/usePostFilters.ts'
+import { usePosts } from '../../hooks/usePosts.ts'
+import { filterPosts } from '../../utils/postFilters.ts'
 import './PostList.scss'
 
-const categoryOptions = Array.from({ length: 5 }, (_, index) => ({
-  id: String(index + 1),
-  label: `Category ${index + 1}`,
-}))
-const authorOptions = Array.from({ length: 5 }, (_, index) => ({
-  id: String(index + 1),
-  label: 'Author Lastname',
-}))
-const filterGroups: FilterGroupData[] = [
-  { id: 'category', title: 'Category', choices: categoryOptions },
-  { id: 'author', title: 'Author', choices: authorOptions },
-]
-const posts = Array.from({ length: 6 }, (_, index) => ({
-  id: String(index + 1),
-  title: 'This is the title of the article with two lines',
-  excerpt:
-    'Lorem ipsum dolor sit amet consectetur. Donec sed faucibus sit id viverra. Etiam dapibus tellus quis nisl.',
-  date: '2024-01-20',
-  author: 'Author Lastname',
-  categories: ['Category 1', 'Category 1'],
-}))
-
 export default function PostList() {
-  const [applied, setApplied] = useState<FilterSelection>({})
-  const [draft, setDraft] = useState<FilterSelection>({})
+  const { filters, updateFilters } = usePostFilters()
+  const [draft, setDraft] = useState<FilterSelection | null>(null)
+  const posts = usePosts()
+  const categories = useCategories()
+  const authors = useAuthors()
 
-  const changeGroup = (groupId: string) => (choiceIds: string[]) => {
-    const next = { ...applied, [groupId]: choiceIds }
-    setApplied(next)
-    setDraft(next)
+  const categoryOptions = (categories.data ?? []).map(({ id, name }) => ({ id, label: name }))
+  const authorOptions = (authors.data ?? []).map(({ id, name }) => ({ id, label: name }))
+  const filterGroups: FilterGroupData[] = [
+    { id: 'category', title: 'Category', choices: categoryOptions },
+    { id: 'author', title: 'Author', choices: authorOptions },
+  ]
+  const applied: FilterSelection = { category: filters.categories, author: filters.authors }
+
+  const apply = ({ category = [], author = [] }: FilterSelection) => {
+    setDraft(null)
+    updateFilters({ categories: category, authors: author })
   }
+
+  const visiblePosts = filterPosts(posts.data ?? [], filters)
 
   return (
     <section className="post-list">
@@ -49,36 +45,60 @@ export default function PostList() {
             <FilterDropdown
               label="Category"
               options={categoryOptions}
-              value={applied.category ?? []}
-              onChange={changeGroup('category')}
+              value={applied.category}
+              onChange={(category) => apply({ ...applied, category })}
             />
             <FilterDropdown
               label="Author"
               options={authorOptions}
-              value={applied.author ?? []}
-              onChange={changeGroup('author')}
+              value={applied.author}
+              onChange={(author) => apply({ ...applied, author })}
             />
           </div>
           <span className="post-list__sort-label">Sort by:</span>
-          <SortButton />
+          <SortButton value={filters.sort} onChange={(sort) => updateFilters({ sort })} />
         </div>
       </header>
       <div className="post-list__body">
         <aside className="post-list__sidebar">
           <FilterPanel
             groups={filterGroups}
-            value={draft}
+            value={draft ?? applied}
             onChange={setDraft}
-            onApply={setApplied}
+            onApply={apply}
           />
         </aside>
-        <ul className="post-list__grid">
-          {posts.map(({ id, ...post }) => (
-            <li key={id} className="post-list__item">
-              <PostCard {...post} to={`/posts/${id}`} />
-            </li>
-          ))}
-        </ul>
+        <div className="post-list__results">
+          {posts.isPending && <p role="status">Loading posts...</p>}
+          {posts.isError && (
+            <div role="alert" className="post-list__message">
+              <p>We could not load the posts.</p>
+              <Button variant="secondary" onClick={() => posts.refetch()}>
+                Try again
+              </Button>
+            </div>
+          )}
+          {posts.isSuccess && visiblePosts.length === 0 && (
+            <p role="status">No posts match your filters.</p>
+          )}
+          {visiblePosts.length > 0 && (
+            <ul className="post-list__grid">
+              {visiblePosts.map((post) => (
+                <li key={post.id} className="post-list__item">
+                  <PostCard
+                    title={post.title}
+                    excerpt={post.content}
+                    date={post.createdAt}
+                    author={post.author.name}
+                    categories={post.categories.map(({ name }) => name)}
+                    imageUrl={post.thumbnail_url}
+                    to={`/posts/${post.id}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </section>
   )
