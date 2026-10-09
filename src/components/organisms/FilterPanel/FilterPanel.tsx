@@ -1,5 +1,6 @@
 import { useId, type SubmitEvent } from 'react'
 import { useControllableState } from '../../../hooks/useControllableState.ts'
+import { toggleItem } from '../../../utils/toggleItem.ts'
 import Button from '../../atoms/Button/Button.tsx'
 import Icon from '../../atoms/Icon/Icon.tsx'
 import FilterGroup, { type FilterChoice } from '../../molecules/FilterGroup/FilterGroup.tsx'
@@ -32,13 +33,7 @@ export default function FilterPanel({
   const titleId = useId()
 
   const toggle = (groupId: string, choiceId: string) => {
-    const current = selection[groupId] ?? []
-    setSelection({
-      ...selection,
-      [groupId]: current.includes(choiceId)
-        ? current.filter((id) => id !== choiceId)
-        : [...current, choiceId],
-    })
+    setSelection({ ...selection, [groupId]: toggleItem(selection[groupId] ?? [], choiceId) })
   }
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {

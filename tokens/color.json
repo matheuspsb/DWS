@@ -30,9 +30,6 @@
     "text-subtle": {
       "$value": "{palette.neutral-dark}"
     },
-    "text-inverse": {
-      "$value": "{palette.white}"
-    },
     "text-link": {
       "$value": "{palette.accent-dark}"
     },
@@ -48,9 +45,6 @@
     "border-default": {
       "$value": "{palette.neutral-extra-light}"
     },
-    "border-strong": {
-      "$value": "{palette.neutral-light}"
-    },
     "border-focus": {
       "$value": "{palette.accent-medium}"
     },
@@ -63,9 +57,6 @@
     "action-primary-hover": {
       "$value": "{palette.primary-medium}"
     },
-    "action-primary-active": {
-      "$value": "{palette.primary-light}"
-    },
     "on-action-primary": {
       "$value": "{palette.neutral-lightest}"
     },
@@ -75,23 +66,17 @@
     "action-secondary-hover": {
       "$value": "{palette.secondary-dark}"
     },
-    "action-secondary-active": {
-      "$value": "{palette.secondary-dark}"
-    },
     "on-action-secondary": {
       "$value": "{palette.neutral-lightest}"
-    },
-    "accent": {
-      "$value": "{palette.accent-medium}"
     },
     "accent-subtle": {
       "$value": "{palette.accent-light}"
     },
+    "accent": {
+      "$value": "{palette.accent-medium}"
+    },
     "on-accent": {
       "$value": "{palette.neutral-extra-light}"
-    },
-    "highlight": {
-      "$value": "{palette.secondary-light}"
     },
     "disabled-background": {
       "$value": "{palette.neutral-extra-light}"

@@ -62,27 +62,22 @@
   --color-text-heading: var(--palette-primary-dark);
   --color-text-muted: var(--palette-neutral-extra-dark);
   --color-text-subtle: var(--palette-neutral-dark);
-  --color-text-inverse: var(--palette-white);
   --color-text-link: var(--palette-accent-dark);
   --color-text-link-hover: var(--palette-primary-light);
   --color-text-accent: var(--palette-accent-dark);
   --color-text-highlight: var(--palette-secondary-medium);
   --color-border-default: var(--palette-neutral-extra-light);
-  --color-border-strong: var(--palette-neutral-light);
   --color-border-focus: var(--palette-accent-medium);
   --color-border-accent: var(--palette-accent-dark);
   --color-action-primary: var(--palette-primary-dark);
   --color-action-primary-hover: var(--palette-primary-medium);
-  --color-action-primary-active: var(--palette-primary-light);
   --color-on-action-primary: var(--palette-neutral-lightest);
   --color-action-secondary: var(--palette-secondary-medium);
   --color-action-secondary-hover: var(--palette-secondary-dark);
-  --color-action-secondary-active: var(--palette-secondary-dark);
   --color-on-action-secondary: var(--palette-neutral-lightest);
-  --color-accent: var(--palette-accent-medium);
   --color-accent-subtle: var(--palette-accent-light);
+  --color-accent: var(--palette-accent-medium);
   --color-on-accent: var(--palette-neutral-extra-light);
-  --color-highlight: var(--palette-secondary-light);
   --color-disabled-background: var(--palette-neutral-extra-light);
   --color-disabled-text: var(--palette-neutral-medium);
 }

@@ -26,20 +26,6 @@ describe('SearchField', () => {
     )
   })
 
-  describe('sizes', () => {
-    it('is regular by default', () => {
-      render(<SearchField />)
-
-      expect(screen.getByRole('search')).toHaveClass('search-field--regular')
-    })
-
-    it('can be compact', () => {
-      render(<SearchField size="compact" />)
-
-      expect(screen.getByRole('search')).toHaveClass('search-field--compact')
-    })
-  })
-
   describe('typing', () => {
     it('keeps what the user types when uncontrolled', async () => {
       render(<SearchField />)

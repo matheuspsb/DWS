@@ -13,27 +13,22 @@ $color-text-default: #202122 !default;
 $color-text-heading: #020318 !default;
 $color-text-muted: #5e5f63 !default;
 $color-text-subtle: #7f8185 !default;
-$color-text-inverse: #ffffff !default;
 $color-text-link: #006c6e !default;
 $color-text-link-hover: #0b0e3a !default;
 $color-text-accent: #006c6e !default;
 $color-text-highlight: #d31450 !default;
 $color-border-default: #e0e2e6 !default;
-$color-border-strong: #c0c2c8 !default;
 $color-border-focus: #009598 !default;
 $color-border-accent: #006c6e !default;
 $color-action-primary: #020318 !default;
 $color-action-primary-hover: #060725 !default;
-$color-action-primary-active: #0b0e3a !default;
 $color-on-action-primary: #f0f0f2 !default;
 $color-action-secondary: #d31450 !default;
 $color-action-secondary-hover: #8c1038 !default;
-$color-action-secondary-active: #8c1038 !default;
 $color-on-action-secondary: #f0f0f2 !default;
-$color-accent: #009598 !default;
 $color-accent-subtle: #00bfc1 !default;
+$color-accent: #009598 !default;
 $color-on-accent: #e0e2e6 !default;
-$color-highlight: #ef4c84 !default;
 $color-disabled-background: #e0e2e6 !default;
 $color-disabled-text: #9ea0a5 !default;
 $shadow-sm: 0 1px 2px rgb(2 3 24 / 8%) !default;
@@ -156,27 +151,22 @@ $tokens: (
     'text-heading': $color-text-heading,
     'text-muted': $color-text-muted,
     'text-subtle': $color-text-subtle,
-    'text-inverse': $color-text-inverse,
     'text-link': $color-text-link,
     'text-link-hover': $color-text-link-hover,
     'text-accent': $color-text-accent,
     'text-highlight': $color-text-highlight,
     'border-default': $color-border-default,
-    'border-strong': $color-border-strong,
     'border-focus': $color-border-focus,
     'border-accent': $color-border-accent,
     'action-primary': $color-action-primary,
     'action-primary-hover': $color-action-primary-hover,
-    'action-primary-active': $color-action-primary-active,
     'on-action-primary': $color-on-action-primary,
     'action-secondary': $color-action-secondary,
     'action-secondary-hover': $color-action-secondary-hover,
-    'action-secondary-active': $color-action-secondary-active,
     'on-action-secondary': $color-on-action-secondary,
-    'accent': $color-accent,
     'accent-subtle': $color-accent-subtle,
+    'accent': $color-accent,
     'on-accent': $color-on-accent,
-    'highlight': $color-highlight,
     'disabled-background': $color-disabled-background,
     'disabled-text': $color-disabled-text
   ),

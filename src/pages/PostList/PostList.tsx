@@ -1,43 +1,25 @@
-import { useState } from 'react'
-import Button from '../../components/atoms/Button/Button.tsx'
 import SortButton from '../../components/molecules/SortButton/SortButton.tsx'
 import FilterDropdown from '../../components/organisms/FilterDropdown/FilterDropdown.tsx'
-import FilterPanel, {
-  type FilterGroupData,
-  type FilterSelection,
-} from '../../components/organisms/FilterPanel/FilterPanel.tsx'
-import PostCard from '../../components/organisms/PostCard/PostCard.tsx'
-import PostCardSkeleton from '../../components/organisms/PostCardSkeleton/PostCardSkeleton.tsx'
-import { useAuthors } from '../../hooks/useAuthors.ts'
-import { useCategories } from '../../hooks/useCategories.ts'
-import { usePostFilters } from '../../hooks/usePostFilters.ts'
+import FilterPanel from '../../components/organisms/FilterPanel/FilterPanel.tsx'
+import PostGrid from '../../components/organisms/PostGrid/PostGrid.tsx'
 import { usePosts } from '../../hooks/usePosts.ts'
 import { filterPosts } from '../../utils/postFilters.ts'
+import { usePostListFilters } from './hooks/usePostListFilters.ts'
 import './PostList.scss'
 
-const skeletons = Array.from({ length: 6 }, (_, index) => index)
-
 export default function PostList() {
-  const { filters, updateFilters } = usePostFilters()
-  const [draft, setDraft] = useState<FilterSelection | null>(null)
+  const {
+    filters,
+    updateFilters,
+    groups,
+    categoryOptions,
+    authorOptions,
+    applied,
+    panelValue,
+    setDraft,
+    apply,
+  } = usePostListFilters()
   const posts = usePosts()
-  const categories = useCategories()
-  const authors = useAuthors()
-
-  const categoryOptions = (categories.data ?? []).map(({ id, name }) => ({ id, label: name }))
-  const authorOptions = (authors.data ?? []).map(({ id, name }) => ({ id, label: name }))
-  const filterGroups: FilterGroupData[] = [
-    { id: 'category', title: 'Category', choices: categoryOptions },
-    { id: 'author', title: 'Author', choices: authorOptions },
-  ]
-  const applied: FilterSelection = { category: filters.categories, author: filters.authors }
-
-  const apply = ({ category = [], author = [] }: FilterSelection) => {
-    setDraft(null)
-    updateFilters({ categories: category, authors: author })
-  }
-
-  const visiblePosts = filterPosts(posts.data ?? [], filters)
 
   return (
     <section className="post-list">
@@ -64,56 +46,15 @@ export default function PostList() {
       </header>
       <div className="post-list__body">
         <aside className="post-list__sidebar">
-          <FilterPanel
-            groups={filterGroups}
-            value={draft ?? applied}
-            onChange={setDraft}
-            onApply={apply}
-          />
+          <FilterPanel groups={groups} value={panelValue} onChange={setDraft} onApply={apply} />
         </aside>
         <div className="post-list__results">
-          {posts.isPending && (
-            <>
-              <p role="status" className="post-list__loading">
-                Loading posts...
-              </p>
-              <ul className="post-list__grid" aria-hidden="true">
-                {skeletons.map((index) => (
-                  <li key={index} className="post-list__item">
-                    <PostCardSkeleton />
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-          {posts.isError && (
-            <div role="alert" className="post-list__message">
-              <p>We could not load the posts.</p>
-              <Button variant="secondary" onClick={() => posts.refetch()}>
-                Try again
-              </Button>
-            </div>
-          )}
-          {posts.isSuccess && visiblePosts.length === 0 && (
-            <p role="status">No posts match your filters.</p>
-          )}
-          {visiblePosts.length > 0 && (
-            <ul className="post-list__grid">
-              {visiblePosts.map((post) => (
-                <li key={post.id} className="post-list__item">
-                  <PostCard
-                    title={post.title}
-                    excerpt={post.content}
-                    date={post.createdAt}
-                    author={post.author.name}
-                    categories={post.categories.map(({ name }) => name)}
-                    imageUrl={post.thumbnail_url}
-                    to={`/posts/${post.id}`}
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
+          <PostGrid
+            posts={filterPosts(posts.data ?? [], filters)}
+            isLoading={posts.isPending}
+            isError={posts.isError}
+            onRetry={() => posts.refetch()}
+          />
         </div>
       </div>
     </section>

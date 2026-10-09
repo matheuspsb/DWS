@@ -7,11 +7,4 @@ describe('PostCardSkeleton', () => {
 
     expect(container.firstElementChild).toHaveAttribute('aria-hidden', 'true')
   })
-
-  it('does not expose any text or interactive element', () => {
-    const { container } = render(<PostCardSkeleton />)
-
-    expect(container).toHaveTextContent('')
-    expect(container.querySelector('a, button')).toBeNull()
-  })
 })

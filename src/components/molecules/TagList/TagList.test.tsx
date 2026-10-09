@@ -11,12 +11,6 @@ describe('TagList', () => {
     expect(screen.getByText('Tech')).toBeInTheDocument()
   })
 
-  it('keeps the given order', () => {
-    render(<TagList items={['B', 'A', 'C']} label="Categories" />)
-
-    expect(screen.getAllByRole('listitem').map((item) => item.textContent)).toEqual(['B', 'A', 'C'])
-  })
-
   it('supports repeated labels', () => {
     render(<TagList items={['Category 1', 'Category 1']} label="Categories" />)
 

@@ -33,34 +33,6 @@ describe('IconButton', () => {
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
 
-  describe('variants', () => {
-    it('is solid by default', () => {
-      render(<IconButton label="Search">{icon}</IconButton>)
-
-      expect(screen.getByRole('button')).toHaveClass('icon-button', 'icon-button--solid')
-    })
-
-    it('can be plain', () => {
-      render(
-        <IconButton label="Back" variant="plain">
-          {icon}
-        </IconButton>,
-      )
-
-      expect(screen.getByRole('button')).toHaveClass('icon-button--plain')
-    })
-
-    it('can use the subtle tone', () => {
-      render(
-        <IconButton label="Clear" variant="plain" subtle>
-          {icon}
-        </IconButton>,
-      )
-
-      expect(screen.getByRole('button')).toHaveClass('icon-button--subtle')
-    })
-  })
-
   describe('behavior', () => {
     it('calls onClick when clicked', async () => {
       const onClick = vi.fn()

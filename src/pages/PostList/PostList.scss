@@ -66,30 +66,4 @@ $sort-label-clearance: 2px;
       grid-column: 4 / span 9;
     }
   }
-
-  &__loading {
-    @include ds.visually-hidden;
-  }
-
-  &__message {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: ds.space(4);
-  }
-
-  &__grid {
-    @include ds.grid;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    @include ds.up('desktop') {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  &__item {
-    @include ds.grid-item(4, 2, 1);
-  }
 }

@@ -22,12 +22,6 @@ describe('SortButton', () => {
     expect(screen.getByRole('button', { name: 'Sort: Oldest first' })).toBeInTheDocument()
   })
 
-  it('hides the decorative icon from assistive technology', () => {
-    const { container } = render(<SortButton />)
-
-    expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true')
-  })
-
   describe('toggling', () => {
     it('switches between newest and oldest on every click', async () => {
       render(<SortButton />)

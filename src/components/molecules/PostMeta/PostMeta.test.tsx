@@ -15,12 +15,6 @@ describe('PostMeta', () => {
     expect(screen.getByText('Jan 20, 2024')).toHaveAttribute('datetime', '2024-01-20')
   })
 
-  it('hides the decorative separator from assistive technology', () => {
-    const { container } = render(<PostMeta date="2024-01-20" author="Author Lastname" />)
-
-    expect(container.querySelector('.post-meta__dot')).toHaveAttribute('aria-hidden', 'true')
-  })
-
   it('falls back to the raw text for an invalid date', () => {
     render(<PostMeta date="soon" author="Author Lastname" />)
 

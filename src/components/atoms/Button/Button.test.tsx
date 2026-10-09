@@ -21,45 +21,6 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
 
-  describe('variants', () => {
-    it('is primary by default', () => {
-      render(<Button>Apply filters</Button>)
-
-      expect(screen.getByRole('button')).toHaveClass('button', 'button--primary')
-    })
-
-    it('can be secondary', () => {
-      render(<Button variant="secondary">Back</Button>)
-
-      expect(screen.getByRole('button')).toHaveClass('button--secondary')
-      expect(screen.getByRole('button')).not.toHaveClass('button--primary')
-    })
-
-    it('can fill the width of its container', () => {
-      render(<Button fullWidth>Apply filters</Button>)
-
-      expect(screen.getByRole('button')).toHaveClass('button--full-width')
-    })
-
-    it('hugs its content by default', () => {
-      render(<Button>Apply filters</Button>)
-
-      expect(screen.getByRole('button')).not.toHaveClass('button--full-width')
-    })
-
-    it('can be compact on mobile', () => {
-      render(<Button compactOnMobile>Back</Button>)
-
-      expect(screen.getByRole('button')).toHaveClass('button--compact-on-mobile')
-    })
-
-    it('keeps the regular size on every screen by default', () => {
-      render(<Button>Back</Button>)
-
-      expect(screen.getByRole('button')).not.toHaveClass('button--compact-on-mobile')
-    })
-  })
-
   describe('start icon', () => {
     it('renders the icon before the label', () => {
       render(

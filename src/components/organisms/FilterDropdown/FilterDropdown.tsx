@@ -1,6 +1,7 @@
 import { useCallback, useId, useRef, useState, type FocusEvent } from 'react'
 import { useControllableState } from '../../../hooks/useControllableState.ts'
 import { useDismiss, type DismissReason } from '../../../hooks/useDismiss.ts'
+import { toggleItem } from '../../../utils/toggleItem.ts'
 import DropdownButton from '../../molecules/DropdownButton/DropdownButton.tsx'
 import FilterOption from '../../molecules/FilterOption/FilterOption.tsx'
 import './FilterDropdown.scss'
@@ -43,9 +44,7 @@ export default function FilterDropdown({
   }
 
   const toggleOption = (id: string) => {
-    setSelectedIds(
-      selectedIds.includes(id) ? selectedIds.filter((item) => item !== id) : [...selectedIds, id],
-    )
+    setSelectedIds(toggleItem(selectedIds, id))
   }
 
   const clearSelection = () => {
