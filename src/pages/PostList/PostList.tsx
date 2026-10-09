@@ -43,8 +43,10 @@ export default function PostList() {
               onChange={(author) => apply({ ...applied, author })}
             />
           </div>
-          <span className="post-list__sort-label">Sort by:</span>
-          <SortButton value={filters.sort} onChange={(sort) => updateFilters({ sort })} />
+          <div className="post-list__sort">
+            <span className="post-list__sort-label">Sort by:</span>
+            <SortButton value={filters.sort} onChange={(sort) => updateFilters({ sort })} />
+          </div>
         </div>
       </header>
       <div className="post-list__body">

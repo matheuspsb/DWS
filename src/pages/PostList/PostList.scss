@@ -39,6 +39,12 @@ $title-to-body: 2.125rem;
     }
   }
 
+  &__sort {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
   &__sort-label {
     display: none;
 

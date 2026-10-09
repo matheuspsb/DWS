@@ -17,15 +17,17 @@
     color ds.duration('fast') ds.easing('standard');
 
   &__label {
-    display: inline-flex;
-    flex-direction: column;
+    @include ds.up('desktop') {
+      display: inline-flex;
+      flex-direction: column;
 
-    &::after {
-      @include ds.text-style('body-sm-bold');
-      content: attr(data-label);
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
+      &::after {
+        @include ds.text-style('body-sm-bold');
+        content: attr(data-label);
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
     }
   }
 
